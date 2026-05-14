@@ -57,10 +57,12 @@
   .hero-heading .accent { color: var(--gold); }
   .hero-underwriting { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 16px; max-width: 460px; font-style: italic; text-align: center; margin-left: auto; margin-right: auto; }
   .hero-tagline { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 36px; max-width: 460px; text-align: center; margin-left: auto; margin-right: auto; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; justify-content: center; }
+  .hero-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; align-items: center; width: 100%; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .btn-full { width: 100%; text-align: center; }
+  .hero-actions-row2 { display: flex; gap: 14px; justify-content: center; width: 100%; }
   .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 30px; border-radius: 4px; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
   .btn-primary:hover { background: var(--gold-light); }
-  .btn-ghost { background: transparent; color: var(--white); padding: 14px 30px; border-radius: 4px; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.32); }
+  .btn-ghost { background: transparent; color: var(--white); padding: 14px 30px; border-radius: 4px; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.32); text-align: center; }
   .hero-phone-cta { display: flex; align-items: center; gap: 8px; color: var(--gold); font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.04em; justify-content: center; }
 
   /* PHOTO DESKTOP */
@@ -135,8 +137,9 @@
     .hero-heading { font-size: clamp(28px, 7.5vw, 42px); margin-bottom: 14px; }
     .hero-underwriting { font-size: 13px; margin-bottom: 14px; }
     .hero-tagline { font-size: 12px; margin-bottom: 24px; }
-    .hero-actions { flex-direction: column; gap: 10px; margin-bottom: 16px; }
-    .btn-primary, .btn-ghost { text-align: center; padding: 13px; }
+    .hero-actions { max-width: 100%; margin-bottom: 16px; }
+    .hero-actions-row2 { flex-direction: column; gap: 10px; }
+    .btn-primary, .btn-ghost { padding: 13px; }
     .hero-phone-cta { font-size: 14px; }
     .trust-inner { padding: 12px 16px; gap: 8px; flex-direction: column; align-items: flex-start; }
     .trust-item { font-size: 10px; }
@@ -331,10 +334,12 @@
       <p class="hero-underwriting">Your loan will be underwritten before writing an offer &mdash; so sellers know you&apos;re serious and your financing is secured. One advisor, fully guided.</p>
       <p class="hero-tagline">220+ lenders. Better rates. One broker. Bilingual service in English and Spanish &mdash; mortgage and real estate. Seasoned since 2004.</p>
       <div class="hero-actions">
-        <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" class="btn-primary">Get Pre-Approved</a>
-        <a href="https://artchavezmtgs.my1003app.com/inquiry" target="_blank" class="btn-ghost">Get Pre-Qualified</a>
+        <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" class="btn-primary btn-full">Get Pre-Approved</a>
+        <div class="hero-actions-row2">
+          <a href="https://artchavezmtgs.my1003app.com/inquiry" target="_blank" class="btn-ghost">Get Pre-Qualified</a>
+          <a href="/services.html" class="btn-ghost">Explore Loan Options</a>
+        </div>
       </div>
-      <a href="/services.html" class="btn-ghost">Explore Loan Options</a>
       <a href="mailto:art@artchavez.com" class="hero-phone-cta">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
         art@artchavez.com
