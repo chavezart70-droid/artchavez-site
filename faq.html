@@ -125,6 +125,50 @@
     .trust-item { font-size: 10px; }
   }
 
+  /* FAQ TABS */
+  .faq-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    border-bottom: 1px solid rgba(200,150,62,0.20);
+  }
+  .faq-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 14px 28px;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.40);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .faq-tab-btn:hover { color: var(--gold); }
+  .faq-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .faq-tab-panel { display: none; }
+  .faq-tab-panel.active { display: block; }
+
+  /* REALTOR PANEL INTRO */
+  .realtor-intro {
+    background: rgba(200,150,62,0.06);
+    border: 1px solid rgba(200,150,62,0.20);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .realtor-intro p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.85;
+    margin: 0;
+  }
+  .realtor-intro strong { color: var(--white); font-weight: 600; }
+
   /* COMPLIANCE FOOTER */
   .compliance-footer {
     background: rgba(0,0,0,0.35);
@@ -285,6 +329,15 @@
 
 <div class="faq-wrap">
 
+  <!-- TAB SWITCHER -->
+  <div class="faq-tabs">
+    <button class="faq-tab-btn active" data-tab="homebuyers">For Homebuyers</button>
+    <button class="faq-tab-btn" data-tab="realtors">For Realtor Partners</button>
+  </div>
+
+  <!-- HOMEBUYERS PANEL -->
+  <div class="faq-tab-panel active" id="tab-homebuyers">
+
   <div class="section-label">
     <div class="label-line"></div>
     <span class="label-text">Mortgage Questions</span>
@@ -412,6 +465,57 @@
     </div>
   </div>
 
+  </div><!-- end tab-homebuyers -->
+
+  <!-- REALTOR PARTNERS PANEL -->
+  <div class="faq-tab-panel" id="tab-realtors">
+
+    <div class="realtor-intro">
+      <p><strong>Your client relationship stays yours.</strong> I am a mortgage broker and real estate agent - but when a colleague refers a client to me for financing, my role is to serve that client's mortgage needs and return them to you. I do not recruit your clients, I do not pursue future business they may have with you, and I do not blur that line. What I do is close loans cleanly, communicate consistently, and make sure your referral reflects well on both of us.</p>
+    </div>
+
+    <div class="section-label">
+      <div class="label-line"></div>
+      <span class="label-text">Referral &amp; Relationship Questions</span>
+      <div class="label-line"></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question"><span class="faq-question-text">If I refer a buyer to you for their mortgage, will you try to take them on as a real estate client?</span><span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">No. When you refer a client to me for mortgage, that is the scope of my role. Your relationship with that client is yours - before, during, and after the transaction. I will not solicit their real estate business, and any future transaction they bring to me independently will come back to you first. That is a commitment I make and keep.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question"><span class="faq-question-text">How do you handle communication during the transaction?</span><span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">You stay in the loop at every stage. I provide proactive updates on file status, flag anything that could affect your timeline or contract, and I am reachable directly - not through a call center, not through a processor. You will always know where the file stands without having to chase anyone down.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question"><span class="faq-question-text">What types of clients do you work best with?</span><span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">I work well across the board - conventional, FHA, VA, USDA, self-employed borrowers, and clients with credit challenges who need a path to approval rather than a flat decline. I am particularly effective with Spanish-speaking buyers who have historically been underserved or mishandled by lenders who did not understand their full financial picture.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question"><span class="faq-question-text">What if the client is not ready to buy yet?</span><span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">I build a plan and stay with them. If credit needs work, I connect them with a complimentary credit repair program and map out exactly what has to change. When they are ready to move, I let you know - and they go back to you. Referrals that are not ready today become transactions for you down the road.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question"><span class="faq-question-text">How do I get started referring clients to you?</span><span class="faq-icon"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+      <div class="faq-answer"><div class="faq-answer-inner">A quick call or text is all it takes. I will introduce myself to your client, take it from there, and keep you informed throughout. Reach me directly at 971-837-5296 or art@artchavez.com. I treat every referral like my professional reputation depends on it - because it does.</div></div>
+    </div>
+
+    <div class="cta-banner">
+      <h2>Let's build something together.</h2>
+      <p>A reliable mortgage partner makes your job easier and your clients more confident. Let's connect.</p>
+      <div class="cta-buttons">
+        <a href="tel:9718375296" class="btn-primary">Call or Text 971-837-5296</a>
+        <a href="mailto:art@artchavez.com" class="btn-ghost">art@artchavez.com</a>
+      </div>
+    </div>
+
+  </div><!-- end tab-realtors -->
+
 </div>
 
 <div class="trust-bar">
@@ -424,6 +528,17 @@
 </div>
 
 <script>
+  // Tab switching
+  document.querySelectorAll('.faq-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.faq-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.faq-tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Accordion
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
