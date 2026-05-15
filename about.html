@@ -140,8 +140,8 @@
     html, body { overflow-x: hidden; }
     .nav-top { display: none; }
     .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; }
-    .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 18px; color: var(--gold); display: block; line-height: 1; text-align: center; }
-    .nav-mobile-brand .sub { font-size: 10px; color: rgba(255,255,255,0.90); letter-spacing: 0.10em; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; }
+    .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 26px; color: #e0ad55; text-shadow: 0 0 8px rgba(224,173,85,0.4); display: block; line-height: 1; text-align: center; }
+    .nav-mobile-brand .sub { font-size: 11px; white-space: nowrap; text-shadow: none; color: #ffffff; letter-spacing: 0.10em; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; padding-left: 0; letter-spacing: 0.08em; }
     .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
     .nav-mobile-phone-strip a { font-size: 12px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
     .mobile-lang-text { display: flex; align-items: center; gap: 4px; }
@@ -313,7 +313,7 @@
     <a href="/index.html" style="text-decoration:none;">
       <div class="nav-brand">
         <span class="name">Art Chavez</span>
-        <span class="sub">Mortgage Broker &middot; Real Estate Agent</span>
+        <span class="sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
       </div>
     </a>
     <div class="nav-links">
@@ -336,9 +336,9 @@
     </div>
   </div>
   <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px;">
-    <div class="nav-mobile-brand">
+    <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
       <span class="name">Art Chavez</span>
-      <span class="sub">Mortgage Broker &middot; Real Estate Agent</span>
+      <span class="sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
     </div>
     <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -371,9 +371,9 @@
     <span class="about-eyebrow">About Art Chavez</span>
     <h1>Built on Two Worlds.<br>Driven by <span class="accent">One Purpose.</span></h1>
     <p>As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world - and that experience didn't just shape who I am. It shaped how I serve people.</p>
-    <p>I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services - US Bank in 1999, then KeyBank - before I moved into mortgage origination in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families - particularly Spanish-speaking clients - who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work.</p>
+    <p>I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services - US Bank in 1999, then KeyBank - before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families - particularly Spanish-speaking clients - who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work.</p>
     <p>Obtaining my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage - one relationship, one conversation, one advisor from start to close.</p>
-    <p>As an independent broker with access to more than 220 wholesale lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits - and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply - that transparent guidance, even when difficult, is the highest form of service.</p>
+    <p>As an independent mortgage broker with access to more than 220 wholesale lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits - and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply - that transparent guidance, even when difficult, is the highest form of service.</p>
     <p>When away from the office, I enjoy helping coach my sons' youth sports and occasionally serve as a licensed substitute teacher, K&ndash;12, for the Hillsboro School District. I'm married to my wonderful wife of 10 years, Shannon, and we have two amazing sons, Braylon and Evan.</p>
   </div>
 
@@ -425,7 +425,7 @@
     <div class="cred-card">
       <div class="cred-label">In Financial Services Since</div>
       <div class="cred-value">1999</div>
-      <div class="cred-sub">Retail banking 1999&ndash;2004 &middot; Mortgage origination 2004&ndash;present</div>
+      <div class="cred-sub">Retail banking 1999&ndash;2004 &middot; Mortgage lending 2004&ndash;present</div>
     </div>
     <div class="cred-card">
       <div class="cred-label">Languages</div>
@@ -501,7 +501,7 @@
     <div class="compliance-top">
       <div class="compliance-brand">
         <span class="compliance-name">Art Chavez</span>
-        <span class="compliance-sub">Mortgage Broker &middot; Real Estate Agent</span>
+        <span class="compliance-sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
       </div>
       <div class="compliance-logos">
         <!-- Equal Housing Opportunity Logo (official) -->
