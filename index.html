@@ -81,9 +81,9 @@
   @media (max-width: 960px) {
     html, body { overflow-x: hidden; }
     .nav-top { display: none; }
-    .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; }
+    .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; width: 100%; box-sizing: border-box; }
     .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 20px; color: #e0ad55; text-shadow: 0 0 8px rgba(224,173,85,0.4); display: block; line-height: 1; text-align: center; }
-    .nav-mobile-brand .sub { font-size: 9px; white-space: nowrap; text-shadow: none; color: #ffffff; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; padding-left: 0; }
+    .nav-mobile-brand .sub { font-size: 10px; white-space: normal; text-shadow: none; color: #ffffff; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; padding-left: 0; line-height: 1.4; }
     .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; gap: 0; }
     .nav-mobile-phone-strip a { font-size: 12px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
     .mobile-lang-text { display: flex; align-items: center; gap: 4px; }
@@ -321,9 +321,9 @@
       <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="nav-apply-btn" data-en="Apply Now" data-es="Solicitar Ahora">Apply Now</a>
     </div>
   </div>
-  <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px;">
+  <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px; width: 100%; box-sizing: border-box;">
     <div style="width:40px; flex-shrink:0;"></div>
-    <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:0; overflow:hidden;">
       <span class="name">Art Chavez</span>
       <span class="sub" id="nav-sub-mobile">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
     </div>
