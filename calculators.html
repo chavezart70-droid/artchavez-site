@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Calculators | Art Chavez</title>
+<meta name="description" content="Free mortgage calculators from Art Chavez — mortgage payment, amortization, rent vs. buy, cost of waiting, affordability, and refinance savings. Bilingual English and Spanish.">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RK4C3BF414"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RK4C3BF414');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0a1628; --gold: #c8963e; --gold-light: #e0ad55; --white: rgba(255,255,255,0.95); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Montserrat, sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.96); border-bottom: 1px solid rgba(200,150,62,0.25); backdrop-filter: blur(6px); }
+  .nav-top { display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; }
+  .nav-brand .name { font-family: "Playfair Display", serif; font-size: 26px; color: var(--gold); display: block; line-height: 1; }
+  .nav-brand .sub { font-size: 11px; color: rgba(255,255,255,0.90); letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-top: 3px; white-space: nowrap; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .lang-toggle { display: flex; gap: 2px; }
+  .lang-btn { padding: 4px 14px; border-radius: 16px; font-size: 11px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); transition: all 0.2s; }
+  .lang-btn.active { background: var(--gold); color: var(--navy); }
+  .nav-phone-desktop { font-size: 15px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; letter-spacing: 0.04em; }
+  .nav-apply-btn { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 4px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.10em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .nav-apply-btn:hover { background: var(--gold-light); }
+  .nav-mobile-row1 { display: none; }
+  .nav-mobile-phone-strip { display: none; }
+
+  /* PAGE HEADER */
+  .page-header { padding: 128px 48px 56px; text-align: center; max-width: 700px; margin: 0 auto; }
+  .page-header .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+  .page-header h1 { font-family: "Playfair Display", serif; font-size: clamp(32px, 4vw, 50px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  .accent { color: var(--gold); font-style: italic; }
+  .page-header p { font-size: 15px; color: rgba(255,255,255,0.60); line-height: 1.7; }
+
+  /* CALC TABS */
+  .calc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0 32px 48px; max-width: 1000px; margin: 0 auto; }
+  .calc-tab-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,150,62,0.18); border-radius: 4px; padding: 10px 20px; font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.50); cursor: pointer; transition: all 0.2s; }
+  .calc-tab-btn:hover { color: var(--gold); border-color: rgba(200,150,62,0.40); }
+  .calc-tab-btn.active { background: rgba(200,150,62,0.12); border-color: var(--gold); color: var(--gold); }
+
+  /* CALC PANELS */
+  .calc-wrap { max-width: 780px; margin: 0 auto; padding: 0 32px 80px; }
+  .calc-panel { display: none; }
+  .calc-panel.active { display: block; }
+
+  /* CALC CARD */
+  .calc-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,150,62,0.18); border-radius: 10px; padding: 40px; }
+  .calc-card h2 { font-family: "Playfair Display", serif; font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .calc-card .calc-desc { font-size: 13px; color: rgba(255,255,255,0.50); margin-bottom: 32px; line-height: 1.6; }
+
+  /* FORM ELEMENTS */
+  .field-group { margin-bottom: 20px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .field-group label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 8px; }
+  .field-group input, .field-group select {
+    width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(200,150,62,0.22);
+    border-radius: 4px; padding: 12px 14px; font-family: Montserrat, sans-serif; font-size: 14px;
+    color: var(--white); outline: none; transition: border 0.2s;
+  }
+  .field-group input:focus, .field-group select:focus { border-color: var(--gold); }
+  .field-group select option { background: var(--navy); }
+  .calc-btn { background: var(--gold); color: var(--navy); border: none; border-radius: 4px; padding: 14px 32px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.10em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 8px; }
+  .calc-btn:hover { background: var(--gold-light); }
+
+  /* RESULTS */
+  .result-box { margin-top: 28px; background: rgba(200,150,62,0.07); border: 1px solid rgba(200,150,62,0.25); border-radius: 8px; padding: 28px 32px; display: none; }
+  .result-box.show { display: block; }
+  .result-primary { font-family: "Playfair Display", serif; font-size: 38px; color: var(--gold); font-weight: 700; line-height: 1.1; }
+  .result-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+  .result-item .result-item-label { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.40); margin-bottom: 4px; }
+  .result-item .result-item-val { font-size: 18px; font-weight: 700; color: var(--white); }
+  .result-note { font-size: 12px; color: rgba(255,255,255,0.40); margin-top: 18px; line-height: 1.6; }
+
+  /* AMORTIZATION TABLE */
+  .amort-table-wrap { margin-top: 28px; max-height: 360px; overflow-y: auto; border: 1px solid rgba(200,150,62,0.18); border-radius: 6px; display: none; }
+  .amort-table-wrap.show { display: block; }
+  .amort-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .amort-table th { background: rgba(200,150,62,0.12); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 14px; text-align: right; position: sticky; top: 0; }
+  .amort-table th:first-child { text-align: left; }
+  .amort-table td { padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: right; color: rgba(255,255,255,0.75); }
+  .amort-table td:first-child { text-align: left; color: rgba(255,255,255,0.45); }
+  .amort-table tr:last-child td { border-bottom: none; }
+
+  /* CTA BANNER */
+  .cta-banner { background: rgba(200,150,62,0.08); border: 1px solid rgba(200,150,62,0.22); border-radius: 10px; padding: 48px 40px; text-align: center; margin-top: 64px; }
+  .cta-banner h2 { font-family: "Playfair Display", serif; font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+  .cta-banner p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 28px; line-height: 1.7; }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 30px; border-radius: 4px; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost { background: transparent; color: var(--white); padding: 14px 30px; border-radius: 4px; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.32); text-align: center; }
+
+  /* COMPLIANCE FOOTER */
+  .compliance-footer { background: rgba(0,0,0,0.35); border-top: 1px solid rgba(200,150,62,0.15); margin-top: 80px; }
+  .compliance-inner { max-width: 1100px; margin: 0 auto; padding: 48px 48px 32px; }
+  .compliance-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; margin-bottom: 32px; }
+  .compliance-name { font-family: "Playfair Display", serif; font-size: 22px; color: var(--gold); display: block; }
+  .compliance-sub { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-top: 4px; }
+  .compliance-logos img { opacity: 0.85; }
+  .compliance-section { margin-bottom: 16px; }
+  .compliance-disclosure { font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+  .compliance-disclosure a { color: rgba(200,150,62,0.7); text-decoration: none; }
+  .compliance-disclosure a:hover { color: var(--gold); }
+  .compliance-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; gap: 8px; }
+
+  /* MOBILE NAV */
+  @media (max-width: 768px) {
+    .nav-top { display: none; }
+    .nav-mobile-row1 { display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 60px; }
+    .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 22px; color: #e0ad55; display: block; line-height: 1; }
+    .nav-mobile-brand .sub { font-size: 10px; color: #ffffff; letter-spacing: 0.10em; text-transform: uppercase; display: block; margin-top: 2px; }
+    .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
+    .nav-mobile-phone-strip a { font-size: 12px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .mobile-lang-text { display: flex; align-items: center; gap: 4px; }
+    .mobile-lang-btn { background: transparent; border: none; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); cursor: pointer; padding: 2px 4px; letter-spacing: 0.08em; }
+    .mobile-lang-btn.active { color: var(--gold); }
+    .hamburger { display: flex; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; background: rgba(10,22,40,0.98); flex-direction: column; padding: 24px 32px; z-index: 99; border-bottom: 1px solid rgba(200,150,62,0.20); }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.70); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-drawer a:hover { color: #c8963e; }
+    .mobile-drawer .drawer-apply { background: var(--gold); color: var(--navy); text-align: center; border-radius: 4px; margin-top: 16px; border: none; padding: 13px; }
+    .mobile-drawer .drawer-apply:hover { background: #e0ad55; color: #0d1f3c; }
+    .page-header { padding: 96px 20px 40px; }
+    .calc-nav { padding: 0 16px 32px; gap: 6px; }
+    .calc-tab-btn { font-size: 10px; padding: 8px 14px; }
+    .calc-wrap { padding: 0 16px 60px; }
+    .calc-card { padding: 24px 20px; }
+    .field-row { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr; }
+    .compliance-inner { padding: 32px 20px 24px; }
+    .compliance-top { flex-direction: column; gap: 20px; }
+    .compliance-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .cta-banner { padding: 36px 20px; }
+    .amort-table th, .amort-table td { padding: 8px 10px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-top">
+    <a href="/index.html" style="text-decoration:none;">
+      <div class="nav-brand">
+        <span class="name">Art Chavez</span>
+        <span class="sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/services.html">Services</a>
+      <a href="/about.html">About</a>
+      <a href="/calculators.html" class="active">Calculators</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:9718375296" class="nav-phone-desktop">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.3 11.87a19.79 19.79 0 01-3.07-8.67A2 2 0 012.2 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.27a16 16 0 006.29 6.29l1.63-1.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.1v1.82z"/></svg>
+        Call or Text &nbsp;&middot;&nbsp; 971-837-5296
+      </a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="nav-apply-btn">Apply Now</a>
+    </div>
+  </div>
+
+  <div class="nav-mobile-row1">
+    <div class="nav-mobile-brand">
+      <span class="name">Art Chavez</span>
+      <span class="sub">Mortgage Broker <span style="font-size:14px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile-phone-strip">
+    <a href="tel:9718375296">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c8963e" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.3 11.87a19.79 19.79 0 01-3.07-8.67A2 2 0 012.2 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.27a16 16 0 006.29 6.29l1.63-1.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.1v1.82z"/></svg>
+      Call or Text &middot; 971-837-5296
+    </a>
+    <div class="mobile-lang-text">
+      <button class="mobile-lang-btn active" onclick="setLang('en')">EN</button>
+      <span style="color:rgba(200,150,62,0.4);font-size:10px;">|</span>
+      <button class="mobile-lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="/index.html">Home</a>
+    <a href="/services.html">Services</a>
+    <a href="/about.html">About</a>
+    <a href="/calculators.html">Calculators</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/contact.html">Contact</a>
+    <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" class="drawer-apply">Apply Now</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <span class="eyebrow" data-en="Free Tools" data-es="Herramientas Gratuitas">Free Tools</span>
+  <h1 data-en="Run the <span class='accent'>Numbers.</span>" data-es="Calcula los <span class='accent'>Números.</span>">Run the <span class="accent">Numbers.</span></h1>
+  <p data-en="Six calculators to help you understand exactly where you stand — before you ever pick up the phone." data-es="Seis calculadoras para ayudarte a entender exactamente dónde estás, antes de hacer una llamada.">Six calculators to help you understand exactly where you stand — before you ever pick up the phone.</p>
+</div>
+
+<!-- CALCULATOR TABS -->
+<div class="calc-nav">
+  <button class="calc-tab-btn active" onclick="showCalc('payment')" data-en="Mortgage Payment" data-es="Pago Hipotecario">Mortgage Payment</button>
+  <button class="calc-tab-btn" onclick="showCalc('amortization')" data-en="Amortization" data-es="Amortización">Amortization</button>
+  <button class="calc-tab-btn" onclick="showCalc('rentvsbuy')" data-en="Rent vs. Buy" data-es="Renta vs. Compra">Rent vs. Buy</button>
+  <button class="calc-tab-btn" onclick="showCalc('costofwaiting')" data-en="Cost of Waiting" data-es="Costo de Esperar">Cost of Waiting</button>
+  <button class="calc-tab-btn" onclick="showCalc('affordability')" data-en="How Much Can I Afford" data-es="¿Cuánto Puedo Pagar?">How Much Can I Afford</button>
+  <button class="calc-tab-btn" onclick="showCalc('refinance')" data-en="Refinance Savings" data-es="Ahorros al Refinanciar">Refinance Savings</button>
+</div>
+
+<!-- CALCULATOR PANELS -->
+<div class="calc-wrap">
+
+  <!-- 1. MORTGAGE PAYMENT -->
+  <div class="calc-panel active" id="calc-payment">
+    <div class="calc-card">
+      <h2 data-en="Mortgage Payment Calculator" data-es="Calculadora de Pago Hipotecario">Mortgage Payment Calculator</h2>
+      <p class="calc-desc" data-en="Estimate your monthly principal and interest payment based on loan amount, rate, and term." data-es="Estima tu pago mensual de capital e interés según el monto del préstamo, la tasa y el plazo.">Estimate your monthly principal and interest payment based on loan amount, rate, and term.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Home Price" data-es="Precio de la Vivienda">Home Price</label>
+          <input type="number" id="mp-price" placeholder="450000" value="450000">
+        </div>
+        <div class="field-group">
+          <label data-en="Down Payment ($)" data-es="Pago Inicial ($)">Down Payment ($)</label>
+          <input type="number" id="mp-down" placeholder="90000" value="90000">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Interest Rate (%)" data-es="Tasa de Interés (%)">Interest Rate (%)</label>
+          <input type="number" id="mp-rate" placeholder="6.75" value="6.75" step="0.05">
+        </div>
+        <div class="field-group">
+          <label data-en="Loan Term" data-es="Plazo del Préstamo">Loan Term</label>
+          <select id="mp-term">
+            <option value="30">30 Years</option>
+            <option value="20">20 Years</option>
+            <option value="15">15 Years</option>
+            <option value="10">10 Years</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Property Tax (Annual $)" data-es="Impuesto Predial (Anual $)">Property Tax (Annual $)</label>
+          <input type="number" id="mp-tax" placeholder="4500" value="4500">
+        </div>
+        <div class="field-group">
+          <label data-en="Insurance (Annual $)" data-es="Seguro (Anual $)">Insurance (Annual $)</label>
+          <input type="number" id="mp-ins" placeholder="1200" value="1200">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcPayment()" data-en="Calculate Payment" data-es="Calcular Pago">Calculate Payment</button>
+      <div class="result-box" id="mp-result">
+        <div class="result-label" data-en="Estimated Monthly Payment (PITI)" data-es="Pago Mensual Estimado (PITI)">Estimated Monthly Payment (PITI)</div>
+        <div class="result-primary" id="mp-total">$0</div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label" data-en="Principal & Interest" data-es="Capital e Interés">Principal & Interest</div>
+            <div class="result-item-val" id="mp-pi">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Property Tax" data-es="Impuesto Predial">Property Tax</div>
+            <div class="result-item-val" id="mp-taxmo">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Insurance" data-es="Seguro">Insurance</div>
+            <div class="result-item-val" id="mp-insmo">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Loan Amount" data-es="Monto del Préstamo">Loan Amount</div>
+            <div class="result-item-val" id="mp-loan">$0</div>
+          </div>
+        </div>
+        <p class="result-note" data-en="This estimate does not include PMI, HOA fees, or other costs. Call 971-837-5296 for a full quote." data-es="Esta estimación no incluye PMI, cuotas de HOA u otros costos. Llama al 971-837-5296 para un presupuesto completo.">This estimate does not include PMI, HOA fees, or other costs. Call 971-837-5296 for a full quote.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. AMORTIZATION -->
+  <div class="calc-panel" id="calc-amortization">
+    <div class="calc-card">
+      <h2 data-en="Amortization Schedule" data-es="Tabla de Amortización">Amortization Schedule</h2>
+      <p class="calc-desc" data-en="See exactly how your loan balance, interest, and equity build month by month over the life of your loan." data-es="Ve exactamente cómo tu saldo, interés y capital crecen mes a mes durante la vida de tu préstamo.">See exactly how your loan balance, interest, and equity build month by month over the life of your loan.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Loan Amount ($)" data-es="Monto del Préstamo ($)">Loan Amount ($)</label>
+          <input type="number" id="am-loan" placeholder="360000" value="360000">
+        </div>
+        <div class="field-group">
+          <label data-en="Interest Rate (%)" data-es="Tasa de Interés (%)">Interest Rate (%)</label>
+          <input type="number" id="am-rate" placeholder="6.75" value="6.75" step="0.05">
+        </div>
+      </div>
+      <div class="field-group">
+        <label data-en="Loan Term" data-es="Plazo del Préstamo">Loan Term</label>
+        <select id="am-term">
+          <option value="30">30 Years</option>
+          <option value="20">20 Years</option>
+          <option value="15">15 Years</option>
+          <option value="10">10 Years</option>
+        </select>
+      </div>
+      <button class="calc-btn" onclick="calcAmortization()" data-en="Generate Schedule" data-es="Generar Tabla">Generate Schedule</button>
+      <div class="result-box" id="am-result" style="display:none;">
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label" data-en="Monthly Payment" data-es="Pago Mensual">Monthly Payment</div>
+            <div class="result-item-val" id="am-monthly">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Total Interest Paid" data-es="Interés Total Pagado">Total Interest Paid</div>
+            <div class="result-item-val" id="am-totalint">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Total Cost of Loan" data-es="Costo Total del Préstamo">Total Cost of Loan</div>
+            <div class="result-item-val" id="am-totalcost">$0</div>
+          </div>
+        </div>
+      </div>
+      <div class="amort-table-wrap" id="am-table-wrap">
+        <table class="amort-table">
+          <thead>
+            <tr>
+              <th data-en="Month" data-es="Mes">Month</th>
+              <th data-en="Payment" data-es="Pago">Payment</th>
+              <th data-en="Principal" data-es="Capital">Principal</th>
+              <th data-en="Interest" data-es="Interés">Interest</th>
+              <th data-en="Balance" data-es="Saldo">Balance</th>
+            </tr>
+          </thead>
+          <tbody id="am-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. RENT VS BUY -->
+  <div class="calc-panel" id="calc-rentvsbuy">
+    <div class="calc-card">
+      <h2 data-en="Rent vs. Buy Calculator" data-es="Calculadora de Renta vs. Compra">Rent vs. Buy Calculator</h2>
+      <p class="calc-desc" data-en="Compare the true long-term cost of renting versus buying. See when buying starts to win." data-es="Compara el costo real a largo plazo de rentar frente a comprar. Ve cuándo comprar empieza a ganar.">Compare the true long-term cost of renting versus buying. See when buying starts to win.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Monthly Rent ($)" data-es="Renta Mensual ($)">Monthly Rent ($)</label>
+          <input type="number" id="rvb-rent" placeholder="2200" value="2200">
+        </div>
+        <div class="field-group">
+          <label data-en="Home Price ($)" data-es="Precio de la Vivienda ($)">Home Price ($)</label>
+          <input type="number" id="rvb-price" placeholder="450000" value="450000">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Down Payment ($)" data-es="Pago Inicial ($)">Down Payment ($)</label>
+          <input type="number" id="rvb-down" placeholder="45000" value="45000">
+        </div>
+        <div class="field-group">
+          <label data-en="Interest Rate (%)" data-es="Tasa de Interés (%)">Interest Rate (%)</label>
+          <input type="number" id="rvb-rate" placeholder="6.75" value="6.75" step="0.05">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Annual Home Appreciation (%)" data-es="Apreciación Anual (%)">Annual Home Appreciation (%)</label>
+          <input type="number" id="rvb-appr" placeholder="4" value="4" step="0.5">
+        </div>
+        <div class="field-group">
+          <label data-en="Years to Compare" data-es="Años a Comparar">Years to Compare</label>
+          <select id="rvb-years">
+            <option value="5">5 Years</option>
+            <option value="7" selected>7 Years</option>
+            <option value="10">10 Years</option>
+            <option value="15">15 Years</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcRentVsBuy()" data-en="Compare Now" data-es="Comparar Ahora">Compare Now</button>
+      <div class="result-box" id="rvb-result">
+        <div class="result-label" id="rvb-verdict-label">After 7 Years of Renting</div>
+        <div class="result-primary" id="rvb-rent-total">$0</div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label" data-en="Total Spent Renting" data-es="Total Gastado en Renta">Total Spent Renting</div>
+            <div class="result-item-val" id="rvb-renttotal">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Total Cost of Buying" data-es="Costo Total de Comprar">Total Cost of Buying</div>
+            <div class="result-item-val" id="rvb-buytotal">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Projected Home Value" data-es="Valor Proyectado del Hogar">Projected Home Value</div>
+            <div class="result-item-val" id="rvb-homeval">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Equity Built" data-es="Capital Acumulado">Equity Built</div>
+            <div class="result-item-val" id="rvb-equity">$0</div>
+          </div>
+        </div>
+        <div class="result-primary" id="rvb-verdict" style="font-size:18px; margin-top:16px;"></div>
+        <p class="result-note" data-en="Estimate uses simplified assumptions. Taxes, insurance, maintenance, and rent increases affect the real outcome. Call for a personalized analysis." data-es="La estimación usa supuestos simplificados. Impuestos, seguro, mantenimiento e incrementos de renta afectan el resultado real. Llama para un análisis personalizado.">Estimate uses simplified assumptions. Taxes, insurance, maintenance, and rent increases affect the real outcome. Call for a personalized analysis.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. COST OF WAITING -->
+  <div class="calc-panel" id="calc-costofwaiting">
+    <div class="calc-card">
+      <h2 data-en="Cost of Waiting Calculator" data-es="Calculadora del Costo de Esperar">Cost of Waiting Calculator</h2>
+      <p class="calc-desc" data-en="What does waiting 6, 12, or 24 months cost you in equity lost and higher payments? The numbers are often surprising." data-es="¿Cuánto te cuesta esperar 6, 12 o 24 meses en capital perdido y pagos más altos? Los números suelen sorprender.">What does waiting 6, 12, or 24 months cost you in equity lost and higher payments? The numbers are often surprising.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Current Home Price ($)" data-es="Precio Actual de la Vivienda ($)">Current Home Price ($)</label>
+          <input type="number" id="cow-price" placeholder="450000" value="450000">
+        </div>
+        <div class="field-group">
+          <label data-en="Down Payment (%)" data-es="Pago Inicial (%)">Down Payment (%)</label>
+          <input type="number" id="cow-down" placeholder="10" value="10" step="1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Current Rate (%)" data-es="Tasa Actual (%)">Current Rate (%)</label>
+          <input type="number" id="cow-rate" placeholder="6.75" value="6.75" step="0.05">
+        </div>
+        <div class="field-group">
+          <label data-en="Annual Home Appreciation (%)" data-es="Apreciación Anual (%)">Annual Home Appreciation (%)</label>
+          <input type="number" id="cow-appr" placeholder="4" value="4" step="0.5">
+        </div>
+      </div>
+      <div class="field-group">
+        <label data-en="Months You Plan to Wait" data-es="Meses que Planeas Esperar">Months You Plan to Wait</label>
+        <select id="cow-months">
+          <option value="6">6 Months</option>
+          <option value="12" selected>12 Months</option>
+          <option value="18">18 Months</option>
+          <option value="24">24 Months</option>
+        </select>
+      </div>
+      <button class="calc-btn" onclick="calcCostOfWaiting()" data-en="Show Me the Cost" data-es="Mostrarme el Costo">Show Me the Cost</button>
+      <div class="result-box" id="cow-result">
+        <div class="result-label" id="cow-label">Cost of Waiting 12 Months</div>
+        <div class="result-primary" id="cow-total">$0</div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label" data-en="Future Home Price" data-es="Precio Futuro de la Vivienda">Future Home Price</div>
+            <div class="result-item-val" id="cow-futureprice">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Higher Down Payment Needed" data-es="Mayor Pago Inicial Necesario">Higher Down Payment Needed</div>
+            <div class="result-item-val" id="cow-extradown">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Monthly Payment Increase" data-es="Aumento en el Pago Mensual">Monthly Payment Increase</div>
+            <div class="result-item-val" id="cow-paymentincrease">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Equity Lost While Waiting" data-es="Capital Perdido al Esperar">Equity Lost While Waiting</div>
+            <div class="result-item-val" id="cow-equitylost">$0</div>
+          </div>
+        </div>
+        <p class="result-note" data-en="Rate change not factored in — waiting may also mean a higher rate. Call 971-837-5296 to talk through your timing." data-es="No se considera cambio de tasa — esperar puede significar también una tasa más alta. Llama al 971-837-5296 para hablar sobre tu momento ideal.">Rate change not factored in — waiting may also mean a higher rate. Call 971-837-5296 to talk through your timing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. AFFORDABILITY -->
+  <div class="calc-panel" id="calc-affordability">
+    <div class="calc-card">
+      <h2 data-en="How Much Can I Afford?" data-es="¿Cuánto Puedo Pagar?">How Much Can I Afford?</h2>
+      <p class="calc-desc" data-en="Based on your income, debts, and down payment, estimate the home price you may qualify for." data-es="Basado en tus ingresos, deudas y pago inicial, estima el precio de vivienda para el que podrías calificar.">Based on your income, debts, and down payment, estimate the home price you may qualify for.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Gross Monthly Income ($)" data-es="Ingreso Mensual Bruto ($)">Gross Monthly Income ($)</label>
+          <input type="number" id="aff-income" placeholder="8000" value="8000">
+        </div>
+        <div class="field-group">
+          <label data-en="Monthly Debts ($)" data-es="Deudas Mensuales ($)">Monthly Debts ($)</label>
+          <input type="number" id="aff-debts" placeholder="500" value="500">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Down Payment ($)" data-es="Pago Inicial ($)">Down Payment ($)</label>
+          <input type="number" id="aff-down" placeholder="45000" value="45000">
+        </div>
+        <div class="field-group">
+          <label data-en="Interest Rate (%)" data-es="Tasa de Interés (%)">Interest Rate (%)</label>
+          <input type="number" id="aff-rate" placeholder="6.75" value="6.75" step="0.05">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcAffordability()" data-en="Calculate Affordability" data-es="Calcular Capacidad de Pago">Calculate Affordability</button>
+      <div class="result-box" id="aff-result">
+        <div class="result-label" data-en="Estimated Maximum Home Price" data-es="Precio Máximo Estimado de Vivienda">Estimated Maximum Home Price</div>
+        <div class="result-primary" id="aff-maxprice">$0</div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label" data-en="Max Monthly Payment (P&I)" data-es="Pago Máximo Mensual (C&I)">Max Monthly Payment (P&I)</div>
+            <div class="result-item-val" id="aff-maxpayment">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Estimated Loan Amount" data-es="Monto Estimado del Préstamo">Estimated Loan Amount</div>
+            <div class="result-item-val" id="aff-loanamt">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Front-End DTI Used" data-es="DTI Frontal Usado">Front-End DTI Used</div>
+            <div class="result-item-val">28%</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Back-End DTI (with debts)" data-es="DTI Total (con deudas)">Back-End DTI (with debts)</div>
+            <div class="result-item-val" id="aff-backdti">0%</div>
+          </div>
+        </div>
+        <p class="result-note" data-en="This uses a 28% front-end DTI guideline. Actual qualification depends on credit score, loan type, and full underwriting. Call 971-837-5296 for a real pre-approval." data-es="Esto usa una guía de DTI frontal del 28%. La calificación real depende del puntaje crediticio, tipo de préstamo y suscripción completa. Llama al 971-837-5296 para una preaprobación real.">This uses a 28% front-end DTI guideline. Actual qualification depends on credit score, loan type, and full underwriting. Call 971-837-5296 for a real pre-approval.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. REFINANCE SAVINGS -->
+  <div class="calc-panel" id="calc-refinance">
+    <div class="calc-card">
+      <h2 data-en="Refinance Savings Calculator" data-es="Calculadora de Ahorros al Refinanciar">Refinance Savings Calculator</h2>
+      <p class="calc-desc" data-en="Compare your current rate to a new rate and see your monthly savings and break-even timeline." data-es="Compara tu tasa actual con una nueva y ve tus ahorros mensuales y el tiempo para recuperar los costos.">Compare your current rate to a new rate and see your monthly savings and break-even timeline.</p>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="Current Loan Balance ($)" data-es="Saldo Actual del Préstamo ($)">Current Loan Balance ($)</label>
+          <input type="number" id="ref-balance" placeholder="340000" value="340000">
+        </div>
+        <div class="field-group">
+          <label data-en="Current Rate (%)" data-es="Tasa Actual (%)">Current Rate (%)</label>
+          <input type="number" id="ref-currate" placeholder="7.25" value="7.25" step="0.05">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label data-en="New Rate (%)" data-es="Nueva Tasa (%)">New Rate (%)</label>
+          <input type="number" id="ref-newrate" placeholder="6.50" value="6.50" step="0.05">
+        </div>
+        <div class="field-group">
+          <label data-en="Remaining Term (Years)" data-es="Plazo Restante (Años)">Remaining Term (Years)</label>
+          <input type="number" id="ref-term" placeholder="25" value="25">
+        </div>
+      </div>
+      <div class="field-group">
+        <label data-en="Estimated Closing Costs ($)" data-es="Costos de Cierre Estimados ($)">Estimated Closing Costs ($)</label>
+        <input type="number" id="ref-costs" placeholder="5000" value="5000">
+      </div>
+      <button class="calc-btn" onclick="calcRefinance()" data-en="Calculate Savings" data-es="Calcular Ahorros">Calculate Savings</button>
+      <div class="result-box" id="ref-result">
+        <div class="result-label" data-en="Monthly Savings" data-es="Ahorro Mensual">Monthly Savings</div>
+        <div class="result-primary" id="ref-monthly">$0</div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label" data-en="Current Payment" data-es="Pago Actual">Current Payment</div>
+            <div class="result-item-val" id="ref-curpayment">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="New Payment" data-es="Nuevo Pago">New Payment</div>
+            <div class="result-item-val" id="ref-newpayment">$0</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="Break-Even Point" data-es="Punto de Equilibrio">Break-Even Point</div>
+            <div class="result-item-val" id="ref-breakeven">0 mo</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label" data-en="5-Year Total Savings" data-es="Ahorro Total a 5 Años">5-Year Total Savings</div>
+            <div class="result-item-val" id="ref-5yr">$0</div>
+          </div>
+        </div>
+        <p class="result-note" data-en="Rate availability depends on credit score, LTV, and market conditions. Call 971-837-5296 to get today's actual rate quote." data-es="La disponibilidad de la tasa depende del puntaje crediticio, LTV y condiciones del mercado. Llama al 971-837-5296 para obtener la cotización de tasa actual.">Rate availability depends on credit score, LTV, and market conditions. Call 971-837-5296 to get today's actual rate quote.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2 data-en="Ready to make it real?" data-es="¿Listo para hacerlo realidad?">Ready to make it real?</h2>
+    <p data-en="Numbers on a calculator are a starting point. A 15-minute call gives you the full picture — in English or Spanish." data-es="Los números en una calculadora son un punto de partida. Una llamada de 15 minutos te da el panorama completo, en inglés o español.">Numbers on a calculator are a starting point. A 15-minute call gives you the full picture — in English or Spanish.</p>
+    <div class="cta-buttons">
+      <a href="tel:9718375296" class="btn-primary" data-en="Call or Text 971-837-5296" data-es="Llama o Envía Mensaje 971-837-5296">Call or Text 971-837-5296</a>
+      <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" class="btn-ghost" data-en="Get Pre-Approved" data-es="Obtén Preaprobación">Get Pre-Approved</a>
+    </div>
+  </div>
+
+</div><!-- end calc-wrap -->
+
+<!-- COMPLIANCE FOOTER -->
+<footer class="compliance-footer">
+  <div class="compliance-inner">
+    <div class="compliance-top">
+      <div class="compliance-brand">
+        <span class="compliance-name">Art Chavez</span>
+        <span class="compliance-sub">Mortgage Broker <span style="font-size:14px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
+      </div>
+      <div class="compliance-logos">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEUCAYAAAAFnmACAAClLklEQVR4nOy9d3RV..." alt="Equal Housing Opportunity and REALTOR" width="140" height="70" style="opacity:0.75;">
+      </div>
+    </div>
+    <div class="compliance-section">
+      <p class="compliance-disclosure">
+        Art Chavez | NMLS #290748 | Oregon Loan Originator License &middot;
+        Client Direct Mortgage / Mortgage Solutions FCS Inc. | NMLS #1065732 |
+        2700 Ygnacio Valley Rd, Suite 255, Walnut Creek, CA 94598 &middot;
+        Licensed Real Estate Agent | License #201261235 |
+        All Professionals Real Estate | License #201216935 |
+        20001 SW Tualatin Valley Hwy, Beaverton, OR 97003
+      </p>
+    </div>
+    <div class="compliance-section">
+      <p class="compliance-disclosure">
+        Verify our mortgage lending licenses at the
+        <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/290748" target="_blank" rel="noopener">NMLS Consumer Access Registry</a>.
+        This is not a commitment to lend. Loan approval is subject to credit review and underwriting guidelines.
+        Programs, rates, and terms are subject to change without notice. All loans are subject to property approval.
+        Calculator results are estimates only and do not constitute a loan offer or guarantee of qualification.
+      </p>
+    </div>
+    <div class="compliance-bottom">
+      <span>&copy; 2026 Art Chavez. All rights reserved.</span>
+      <span>Greater Portland Metro &middot; Serving Oregon</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── UTILITIES ────────────────────────────────────────────────────────────────
+function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+function pmt(rate, n, pv) {
+  if (rate === 0) return pv / n;
+  return pv * rate * Math.pow(1 + rate, n) / (Math.pow(1 + rate, n) - 1);
+}
+
+// ── TABS ─────────────────────────────────────────────────────────────────────
+function showCalc(id) {
+  document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.calc-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('calc-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── 1. MORTGAGE PAYMENT ───────────────────────────────────────────────────────
+function calcPayment() {
+  var price = +document.getElementById('mp-price').value || 0;
+  var down = +document.getElementById('mp-down').value || 0;
+  var rate = (+document.getElementById('mp-rate').value || 0) / 100 / 12;
+  var n = (+document.getElementById('mp-term').value || 30) * 12;
+  var tax = +document.getElementById('mp-tax').value || 0;
+  var ins = +document.getElementById('mp-ins').value || 0;
+  var loan = price - down;
+  var pi = pmt(rate, n, loan);
+  var taxmo = tax / 12;
+  var insmo = ins / 12;
+  var total = pi + taxmo + insmo;
+  document.getElementById('mp-pi').textContent = fmt(pi);
+  document.getElementById('mp-taxmo').textContent = fmt(taxmo);
+  document.getElementById('mp-insmo').textContent = fmt(insmo);
+  document.getElementById('mp-loan').textContent = fmt(loan);
+  document.getElementById('mp-total').textContent = fmt(total);
+  document.getElementById('mp-result').classList.add('show');
+}
+
+// ── 2. AMORTIZATION ───────────────────────────────────────────────────────────
+function calcAmortization() {
+  var loan = +document.getElementById('am-loan').value || 0;
+  var rate = (+document.getElementById('am-rate').value || 0) / 100 / 12;
+  var n = (+document.getElementById('am-term').value || 30) * 12;
+  var monthly = pmt(rate, n, loan);
+  var totalInt = monthly * n - loan;
+  document.getElementById('am-monthly').textContent = fmt(monthly);
+  document.getElementById('am-totalint').textContent = fmt(totalInt);
+  document.getElementById('am-totalcost').textContent = fmt(monthly * n);
+  var resultEl = document.getElementById('am-result');
+  resultEl.style.display = 'block';
+  var tbody = document.getElementById('am-tbody');
+  tbody.innerHTML = '';
+  var balance = loan;
+  for (var i = 1; i <= n; i++) {
+    var interest = balance * rate;
+    var principal = monthly - interest;
+    balance -= principal;
+    if (balance < 0) balance = 0;
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + i + '</td><td>' + fmt(monthly) + '</td><td>' + fmt(principal) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(balance) + '</td>';
+    tbody.appendChild(tr);
+  }
+  document.getElementById('am-table-wrap').classList.add('show');
+}
+
+// ── 3. RENT VS BUY ────────────────────────────────────────────────────────────
+function calcRentVsBuy() {
+  var rent = +document.getElementById('rvb-rent').value || 0;
+  var price = +document.getElementById('rvb-price').value || 0;
+  var down = +document.getElementById('rvb-down').value || 0;
+  var rate = (+document.getElementById('rvb-rate').value || 0) / 100 / 12;
+  var appr = (+document.getElementById('rvb-appr').value || 4) / 100;
+  var years = +document.getElementById('rvb-years').value || 7;
+  var loan = price - down;
+  var n = 30 * 12;
+  var monthly = pmt(rate, n, loan);
+  var rentTotal = rent * 12 * years;
+  var buyTotal = (monthly * 12 * years) + down;
+  var futureVal = price * Math.pow(1 + appr, years);
+  var remainBal = loan;
+  for (var i = 0; i < years * 12; i++) {
+    var int = remainBal * rate;
+    remainBal -= (monthly - int);
+  }
+  var equity = futureVal - remainBal;
+  document.getElementById('rvb-renttotal').textContent = fmt(rentTotal);
+  document.getElementById('rvb-buytotal').textContent = fmt(buyTotal);
+  document.getElementById('rvb-homeval').textContent = fmt(futureVal);
+  document.getElementById('rvb-equity').textContent = fmt(equity);
+  document.getElementById('rvb-rent-total').textContent = fmt(rentTotal);
+  var label = currentLang === 'es' ? 'Después de ' + years + ' Años Rentando' : 'After ' + years + ' Years of Renting';
+  document.getElementById('rvb-verdict-label').textContent = label;
+  var diff = equity - rentTotal;
+  var verdict = diff > 0
+    ? (currentLang === 'es' ? 'Comprar te pone ' + fmt(diff) + ' adelante.' : 'Buying puts you ' + fmt(diff) + ' ahead.')
+    : (currentLang === 'es' ? 'Rentar cuesta menos en este período.' : 'Renting costs less over this period.');
+  document.getElementById('rvb-verdict').textContent = verdict;
+  document.getElementById('rvb-result').classList.add('show');
+}
+
+// ── 4. COST OF WAITING ────────────────────────────────────────────────────────
+function calcCostOfWaiting() {
+  var price = +document.getElementById('cow-price').value || 0;
+  var downPct = (+document.getElementById('cow-down').value || 10) / 100;
+  var rate = (+document.getElementById('cow-rate').value || 6.75) / 100 / 12;
+  var appr = (+document.getElementById('cow-appr').value || 4) / 100;
+  var months = +document.getElementById('cow-months').value || 12;
+  var futurePrice = price * Math.pow(1 + appr, months / 12);
+  var currentLoan = price * (1 - downPct);
+  var futureLoan = futurePrice * (1 - downPct);
+  var n = 30 * 12;
+  var currentPayment = pmt(rate, n, currentLoan);
+  var futurePayment = pmt(rate, n, futureLoan);
+  var paymentIncrease = futurePayment - currentPayment;
+  var extraDown = (futurePrice - price) * downPct;
+  var equityLost = (futurePrice - price) * (1 - downPct) * 0.04; // approx equity missed
+  var totalCost = extraDown + (paymentIncrease * 12) + equityLost;
+  var label = currentLang === 'es' ? 'Costo de Esperar ' + months + ' Meses' : 'Cost of Waiting ' + months + ' Months';
+  document.getElementById('cow-label').textContent = label;
+  document.getElementById('cow-total').textContent = fmt(totalCost);
+  document.getElementById('cow-futureprice').textContent = fmt(futurePrice);
+  document.getElementById('cow-extradown').textContent = fmt(extraDown);
+  document.getElementById('cow-paymentincrease').textContent = fmt(paymentIncrease) + '/mo';
+  document.getElementById('cow-equitylost').textContent = fmt(equityLost);
+  document.getElementById('cow-result').classList.add('show');
+}
+
+// ── 5. AFFORDABILITY ──────────────────────────────────────────────────────────
+function calcAffordability() {
+  var income = +document.getElementById('aff-income').value || 0;
+  var debts = +document.getElementById('aff-debts').value || 0;
+  var down = +document.getElementById('aff-down').value || 0;
+  var rate = (+document.getElementById('aff-rate').value || 6.75) / 100 / 12;
+  var n = 30 * 12;
+  var maxPI = income * 0.28;
+  var loanAmt = maxPI / (rate * Math.pow(1 + rate, n) / (Math.pow(1 + rate, n) - 1));
+  var maxPrice = loanAmt + down;
+  var backDTI = ((maxPI + debts) / income * 100).toFixed(1);
+  document.getElementById('aff-maxprice').textContent = fmt(maxPrice);
+  document.getElementById('aff-maxpayment').textContent = fmt(maxPI);
+  document.getElementById('aff-loanamt').textContent = fmt(loanAmt);
+  document.getElementById('aff-backdti').textContent = backDTI + '%';
+  document.getElementById('aff-result').classList.add('show');
+}
+
+// ── 6. REFINANCE ──────────────────────────────────────────────────────────────
+function calcRefinance() {
+  var balance = +document.getElementById('ref-balance').value || 0;
+  var curRate = (+document.getElementById('ref-currate').value || 7.25) / 100 / 12;
+  var newRate = (+document.getElementById('ref-newrate').value || 6.50) / 100 / 12;
+  var term = +document.getElementById('ref-term').value || 25;
+  var costs = +document.getElementById('ref-costs').value || 5000;
+  var n = term * 12;
+  var curPayment = pmt(curRate, n, balance);
+  var newPayment = pmt(newRate, n, balance);
+  var savings = curPayment - newPayment;
+  var breakEven = savings > 0 ? Math.ceil(costs / savings) : 0;
+  var fiveYrSavings = savings > 0 ? (savings * 60) - costs : 0;
+  document.getElementById('ref-curpayment').textContent = fmt(curPayment);
+  document.getElementById('ref-newpayment').textContent = fmt(newPayment);
+  document.getElementById('ref-monthly').textContent = fmt(savings);
+  document.getElementById('ref-breakeven').textContent = breakEven + ' mo';
+  document.getElementById('ref-5yr').textContent = fmt(fiveYrSavings > 0 ? fiveYrSavings : 0);
+  document.getElementById('ref-result').classList.add('show');
+}
+
+// ── LANGUAGE TOGGLE ───────────────────────────────────────────────────────────
+var currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+    var val = el.getAttribute('data-' + lang);
+    if (el.tagName === 'INPUT' || el.tagName === 'SELECT') return;
+    el.innerHTML = val;
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+  document.querySelectorAll('.mobile-lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+}
+
+// ── MOBILE DRAWER ─────────────────────────────────────────────────────────────
+function toggleDrawer() {
+  var btn = document.getElementById('hamburger');
+  var drawer = document.getElementById('mobileDrawer');
+  var nav = document.querySelector('nav');
+  var navHeight = nav.getBoundingClientRect().height;
+  drawer.style.top = navHeight + 'px';
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+}
+</script>
+</body>
+</html>
