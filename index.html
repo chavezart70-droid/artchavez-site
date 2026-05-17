@@ -475,42 +475,41 @@ function toggleDrawer() {
   drawer.classList.toggle('open');
 }
 
-function setLanguage(lang) {
-  document.querySelectorAll('[data-en]').forEach(function(el) {
-    if (lang === 'es' && el.getAttribute('data-es')) {
-      el.textContent = el.getAttribute('data-es');
-    } else {
-      el.textContent = el.getAttribute('data-en');
-    }
-  });
-  // Update active state on desktop buttons
+document.addEventListener('DOMContentLoaded', function() {
+
+  function setLanguage(lang) {
+    document.querySelectorAll('[data-en]').forEach(function(el) {
+      if (lang === 'es' && el.getAttribute('data-es')) {
+        el.textContent = el.getAttribute('data-es');
+      } else {
+        el.textContent = el.getAttribute('data-en');
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    document.querySelectorAll('.mobile-lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    localStorage.setItem('lang', lang);
+  }
+
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    btn.addEventListener('click', function() {
+      setLanguage(btn.textContent.toLowerCase());
+    });
   });
-  // Update active state on mobile buttons
+
   document.querySelectorAll('.mobile-lang-btn').forEach(function(btn) {
-    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    btn.addEventListener('click', function() {
+      setLanguage(btn.textContent.toLowerCase());
+    });
   });
-  localStorage.setItem('lang', lang);
-}
 
-// Wire up desktop buttons
-document.querySelectorAll('.lang-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    setLanguage(btn.textContent.toLowerCase());
-  });
+  var savedLang = localStorage.getItem('lang');
+  if (savedLang) setLanguage(savedLang);
+
 });
-
-// Wire up mobile buttons
-document.querySelectorAll('.mobile-lang-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    setLanguage(btn.textContent.toLowerCase());
-  });
-});
-
-// Apply saved language on load
-var savedLang = localStorage.getItem('lang');
-if (savedLang) setLanguage(savedLang);
 
 </script>
 </body>
