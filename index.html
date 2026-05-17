@@ -325,7 +325,9 @@
   <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px;">
     <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
       <span class="name">Art Chavez</span>
-      <span class="sub" id="nav-sub-mobile">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span> onclick="toggleDrawer()" aria-label="Menu">
+      <span class="sub" id="nav-sub-mobile">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -400,7 +402,7 @@
 
 <div class="trust-bar">
   <div class="trust-inner">
-    <div class="trust-item"><span class="trust-dot"></span><span data-en="Licensed Mortgage Broker · NMLS 1065732" data-es="Bróker Hipotecario Licenciado · NMLS 1065732">Licensed Mortgage Broker &middot; NMLS 1065732</span></div>
+    <div class="trust-item"><span class="trust-dot"></span><span data-en="Licensed Mortgage Broker · NMLS 1065732" data-es="Bróker de Hipotecas Licenciado · NMLS 1065732">Licensed Mortgage Broker &middot; NMLS 1065732</span></div>
     <div class="trust-item"><span class="trust-dot"></span><span data-en="Licensed Real Estate Agent · 201261235" data-es="Agente de Bienes Raíces Licenciado · 201261235">Licensed Real Estate Agent &middot; 201261235</span></div>
     <div class="trust-item"><span class="trust-dot"></span><span data-en="Bilingual · English & Spanish" data-es="Bilingüe · Inglés y Español">Bilingual &middot; English &amp; Spanish</span></div>
     <div class="trust-item"><span class="trust-dot"></span><span data-en="Greater Portland Metro" data-es="Área Metropolitana de Portland">Greater Portland Metro</span></div>
@@ -511,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var h = document.getElementById('hero-heading');
     if (!h) return;
     if (lang === 'es') {
-      h.innerHTML = 'Pre-aprobado<br>antes de hacer una <span class="accent">oferta.</span>';
+      h.innerHTML = 'Aprobado antes de hacer<br>una oferta para <span class="accent">tu casa.</span>';
     } else {
       h.innerHTML = 'Underwritten<br>before it&apos;s <span class="accent">written.</span>';
     }
@@ -529,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var el = document.getElementById(id);
       if (!el) return;
       if (lang === 'es') {
-        el.innerHTML = 'Bróker Hipotecario <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;';
+        el.innerHTML = 'Bróker de Hipotecas <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Agente de Bienes Raíces';
       } else {
         el.innerHTML = 'Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;';
       }
