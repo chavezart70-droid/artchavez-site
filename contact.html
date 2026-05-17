@@ -332,27 +332,28 @@
   <!-- FORM -->
   <div class="form-card">
     <h2>Send a Message</h2>
+    <form action="https://formspree.io/f/mwvzebal" method="POST" id="contact-form">
     <div class="form-row">
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" placeholder="First name">
+        <input type="text" name="first_name" placeholder="First name" required>
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" placeholder="Last name">
+        <input type="text" name="last_name" placeholder="Last name" required>
       </div>
     </div>
     <div class="form-group">
       <label>Phone Number</label>
-      <input type="tel" placeholder="(503) 555-0000">
+      <input type="tel" name="phone" placeholder="(503) 555-0000">
     </div>
     <div class="form-group">
       <label>Email Address</label>
-      <input type="email" placeholder="you@email.com">
+      <input type="email" name="email" placeholder="you@email.com" required>
     </div>
     <div class="form-group">
       <label>I am interested in</label>
-      <select>
+      <select name="service">
         <option value="">Select a service...</option>
         <option>Pre-Approval</option>
         <option>Purchase Loan</option>
@@ -367,17 +368,21 @@
     </div>
     <div class="form-group">
       <label>Preferred Language</label>
-      <select>
+      <select name="language">
         <option>English</option>
         <option>Spanish / Espa&ntilde;ol</option>
       </select>
     </div>
     <div class="form-group">
       <label>Message (optional)</label>
-      <textarea placeholder="Tell me a little about your situation or what you have questions about..."></textarea>
+      <textarea name="message" placeholder="Tell me a little about your situation or what you have questions about..."></textarea>
     </div>
-    <button class="form-submit">Send Message</button>
+    <button type="submit" class="form-submit">Send Message</button>
     <p class="form-note">Your information is never sold or shared. I respond personally, usually within one business day.</p>
+    <div id="form-success" style="display:none; margin-top:16px; padding:16px; background:rgba(200,150,62,0.12); border:1px solid rgba(200,150,62,0.35); border-radius:6px; text-align:center; color:#e0ad55; font-size:14px; font-weight:600;">
+      Message received. I'll be in touch within one business day.
+    </div>
+    </form>
   </div>
 
   <!-- SIDEBAR -->
@@ -498,6 +503,29 @@ function toggleDrawer() {
   drawer.style.top = navHeight + 'px';
   btn.classList.toggle('open');
   drawer.classList.toggle('open');
+}
+
+// Formspree AJAX submission
+var contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = new FormData(contactForm);
+    fetch('https://formspree.io/f/mwvzebal', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        contactForm.reset();
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please email art@artchavez.com directly.');
+      }
+    }).catch(function() {
+      alert('Something went wrong. Please email art@artchavez.com directly.');
+    });
+  });
 }
 </script>
 </body>
