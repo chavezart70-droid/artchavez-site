@@ -300,7 +300,7 @@
   <div class="nav-top">
     <div class="nav-brand">
       <span class="name">Art Chavez</span>
-      <span class="sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
+      <span class="sub" id="nav-sub-desktop">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
     </div>
     <div class="nav-links">
       <a href="/index.html" class="active" data-en="Home" data-es="Inicio">Home</a>
@@ -325,9 +325,7 @@
   <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px;">
     <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
       <span class="name">Art Chavez</span>
-      <span class="sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
-    </div>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span class="sub" id="nav-sub-mobile">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span> onclick="toggleDrawer()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -382,7 +380,7 @@
         </div>
         <div class="b-desc"><span data-en="Mortgage + Real Estate &nbsp;&middot;&nbsp; One Advisor &nbsp;&middot;&nbsp; Fully Guided" data-es="Hipoteca + Bienes Raíces &nbsp;&middot;&nbsp; Un Asesor &nbsp;&middot;&nbsp; Guía Completa">Mortgage <span class="gold">+</span> Real Estate &nbsp;&middot;&nbsp; One Advisor &nbsp;&middot;&nbsp; Fully Guided</span></div>
       </div>
-      <h1 class="hero-heading">Underwritten<br>before it&apos;s <span class="accent">written.</span></h1>
+      <h1 class="hero-heading" id="hero-heading">Underwritten<br>before it&apos;s <span class="accent">written.</span></h1>
       <p class="hero-underwriting" data-en="Your loan will be underwritten before writing an offer - so sellers know you're serious and your financing is secured. One advisor, fully guided." data-es="Tu préstamo estará aprobado antes de hacer una oferta - para que los vendedores sepan que eres serio y tu financiamiento está asegurado. Un asesor, guía completa."></p>
       <p class="hero-tagline" data-en="220+ lenders. Better rates. One broker. Bilingual service in English and Spanish - mortgage and real estate. Seasoned since 2004." data-es="Más de 220 bancos mayoristas. Mejores tasas. Un solo bróker hipotecario. Servicio bilingüe en inglés y español - hipotecas y bienes raíces. Con experiencia desde 2004.">220+ lenders. Better rates. One broker. Bilingual service in English and Spanish &mdash; mortgage and real estate. Seasoned since 2004.</p>
       <div class="hero-actions">
@@ -402,10 +400,10 @@
 
 <div class="trust-bar">
   <div class="trust-inner">
-    <div class="trust-item"><span class="trust-dot"></span data-en="Licensed Mortgage Broker · NMLS 1065732" data-es="Bróker Hipotecario Licenciado · NMLS 1065732">Licensed Mortgage Broker &middot; NMLS 1065732</div>
-    <div class="trust-item"><span class="trust-dot"></span data-en="Licensed Real Estate Agent · 201261235" data-es="Agente de Bienes Raíces Licenciado · 201261235">Licensed Real Estate Agent &middot; 201261235</div>
-    <div class="trust-item"><span class="trust-dot"></span data-en="Bilingual · English & Spanish" data-es="Bilingüe · Inglés y Español">Bilingual &middot; English &amp; Spanish</div>
-    <div class="trust-item"><span class="trust-dot"></span data-en="Greater Portland Metro" data-es="Área Metropolitana de Portland">Greater Portland Metro</div>
+    <div class="trust-item"><span class="trust-dot"></span><span data-en="Licensed Mortgage Broker · NMLS 1065732" data-es="Bróker Hipotecario Licenciado · NMLS 1065732">Licensed Mortgage Broker &middot; NMLS 1065732</span></div>
+    <div class="trust-item"><span class="trust-dot"></span><span data-en="Licensed Real Estate Agent · 201261235" data-es="Agente de Bienes Raíces Licenciado · 201261235">Licensed Real Estate Agent &middot; 201261235</span></div>
+    <div class="trust-item"><span class="trust-dot"></span><span data-en="Bilingual · English & Spanish" data-es="Bilingüe · Inglés y Español">Bilingual &middot; English &amp; Spanish</span></div>
+    <div class="trust-item"><span class="trust-dot"></span><span data-en="Greater Portland Metro" data-es="Área Metropolitana de Portland">Greater Portland Metro</span></div>
   </div>
 </div>
 
@@ -508,6 +506,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var savedLang = localStorage.getItem('lang');
   if (savedLang) setLanguage(savedLang);
+
+  function setHeading(lang) {
+    var h = document.getElementById('hero-heading');
+    if (!h) return;
+    if (lang === 'es') {
+      h.innerHTML = 'Pre-aprobado<br>antes de hacer una <span class="accent">oferta.</span>';
+    } else {
+      h.innerHTML = 'Underwritten<br>before it&apos;s <span class="accent">written.</span>';
+    }
+  }
+
+  document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setHeading(btn.textContent.toLowerCase());
+    });
+  });
+
+  function setSubTitles(lang) {
+    var subs = ['nav-sub-desktop', 'nav-sub-mobile'];
+    subs.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (lang === 'es') {
+        el.innerHTML = 'Bróker Hipotecario <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;';
+      } else {
+        el.innerHTML = 'Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;';
+      }
+    });
+  }
+
+  document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setSubTitles(btn.textContent.toLowerCase());
+    });
+  });
+
+  if (savedLang) setSubTitles(savedLang);
 
 });
 
