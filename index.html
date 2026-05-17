@@ -126,7 +126,6 @@
       display: block;
       position: static;
       margin: 0 auto;
-      margin-right: 40px;
       object-fit: contain;
       filter: none;
     }
@@ -417,8 +416,8 @@
     <!-- TOP ROW: Logo + Tagline -->
     <div class="compliance-top">
       <div class="compliance-brand">
-        <span class="compliance-name">Art Chavez</span>
-        <span class="compliance-sub">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
+        <span class="compliance-name" data-en="Art Chavez" data-es="Art Chavez">Art Chavez</span>
+        <span class="compliance-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker de Hipotecas · Agente de Bienes Raíces">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
       </div>
       <div class="compliance-logos">
         <!-- Equal Housing Opportunity Logo (official) -->
@@ -544,6 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  if (savedLang) setHeading(savedLang);
   if (savedLang) setSubTitles(savedLang);
 
 });
