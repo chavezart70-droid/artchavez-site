@@ -123,6 +123,7 @@
       .mobile-lang-btn { background: transparent; border: none; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); cursor: pointer; padding: 2px 4px; letter-spacing: 0.08em; }
       .mobile-lang-btn.active { color: var(--gold); }
       .about-hero { grid-template-columns: 1fr; padding: 100px 20px 40px; gap: 24px; }
+      .about-hero h1 { font-size: clamp(26px, 7vw, 38px); }
       .about-photo-col { order: -1; }
       .about-photo-wrap { max-width: 420px; margin: -20px auto 0; }
       .about-photo-badge { display: none; }
@@ -276,28 +277,28 @@
       <div class="how-card">
         <h3 data-en="Transparent over easy" data-es="Transparencia antes que facilidad">Transparent over easy</h3>
         <p data-en="Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position."
-           data-es="Cada recomendación que hago se evalúa bajo un solo estándar: lo que realmente beneficia la posición financiera a largo plazo del cliente.">
+           data-es="Cada recomendación que hago se evalúa bajo un solo estándar: lo que realmente beneficia la estabilidad financiera de mi cliente a largo plazo.">
           Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position.
         </p>
       </div>
       <div class="how-card">
         <h3 data-en="Underwritten before it's written" data-es="Preaprobado antes de hacer una oferta">Underwritten before it's written</h3>
         <p data-en="Your mortgage financing is pre-approved through Fannie Mae, Freddie Mac or FHA TOTAL Mortgage Scorecard before you write an offer. That gives you negotiating power and eliminates financing contingency risk."
-           data-es="Su financiamiento hipotecario se preaprueba a través de Fannie Mae, Freddie Mac o el Sistema de Puntuación Total de Hipotecas de la FHA antes de que haga una oferta. Esto le da mayor poder de negociación y elimina el riesgo de contingencias de financiamiento.">
+           data-es="Preaprobamos su financiamiento hipotecario con Fannie Mae, Freddie Mac o el Sistema de Puntuación Total de Hipotecas de la FHA antes de que haga una oferta. Esto le da una fuerte ventaja al negociar y elimina el riesgo de contingencias con el préstamo.">
           Your mortgage financing is pre-approved through Fannie Mae, Freddie Mac or FHA TOTAL Mortgage Scorecard before you write an offer. That gives you negotiating power and eliminates financing contingency risk.
         </p>
       </div>
       <div class="how-card">
-        <h3 data-en="One advisor, fully guided" data-es="Un asesor, guía completa">One advisor, fully guided</h3>
+        <h3 data-en="One advisor, fully guided" data-es="Un solo asesor, una guía completa">One advisor, fully guided</h3>
         <p data-en="Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors."
-           data-es="Gestionar tanto la hipoteca como el proceso inmobiliario bajo un mismo techo significa que cada detalle está cubierto: sin vacíos, sin malentendidos y sin transferencias fallidas entre distintos asesores.">
+           data-es="Manejar tanto la hipoteca como el proceso de bienes raíces en un solo lugar garantiza que cada detalle esté cubierto: sin descuidos, sin malentendidos y sin las complicaciones de pasar de un asesor a otro.">
           Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors.
         </p>
       </div>
       <div class="how-card">
         <h3 data-en="Bilingual from day one" data-es="Bilingüe desde el primer día">Bilingual from day one</h3>
         <p data-en="Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard."
-           data-es="Los clientes de habla hispana reciben la misma profundidad de orientación, las mismas explicaciones y el mismo nivel de acceso, no un simple resumen traducido de lo que se les explica a los clientes en inglés.">
+           data-es="Nuestros clientes que hablan español reciben la misma profundidad de asesoría, explicaciones y acceso, no un simple resumen traducido de lo que se les explica a los clientes en inglés.">
           Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard.
         </p>
       </div>
@@ -400,22 +401,29 @@
         <span class="compliance-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
       </div>
       <div class="compliance-logos">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Realtor®">
-          <rect width="64" height="64" fill="white"/>
-          <rect x="6" y="6" width="52" height="42" fill="#002f6c"/>
-          <text x="32" y="40" font-family="Arial Black, Arial" font-weight="900" font-size="34" fill="white" text-anchor="middle">R</text>
-          <rect x="6" y="48" width="52" height="10" fill="white"/>
-          <text x="32" y="56" font-family="Arial, sans-serif" font-weight="700" font-size="7.5" fill="#002f6c" text-anchor="middle" letter-spacing="1.5">REALTOR®</text>
+        <!-- REALTOR® Logo -->
+        <svg width="60" height="72" viewBox="0 0 60 72" xmlns="http://www.w3.org/2000/svg" aria-label="Realtor®">
+          <rect width="60" height="60" fill="#002f6c"/>
+          <text x="30" y="46" font-family="Arial Black, Arial" font-weight="900" font-size="42" fill="white" text-anchor="middle">R</text>
+          <rect y="60" width="60" height="12" fill="white"/>
+          <text x="30" y="69" font-family="Arial, sans-serif" font-weight="700" font-size="8" fill="#002f6c" text-anchor="middle" letter-spacing="1">REALTOR®</text>
         </svg>
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Equal Housing Opportunity">
-          <rect width="64" height="64" fill="white"/>
-          <polygon points="32,8 6,28 12,28 12,54 52,54 52,28 58,28" fill="white" stroke="#555" stroke-width="2.5" stroke-linejoin="round"/>
-          <polygon points="32,8 6,28 58,28" fill="#555"/>
-          <rect x="25" y="36" width="14" height="18" fill="#555"/>
-          <rect x="14" y="33" width="8" height="8" fill="#555"/>
-          <rect x="42" y="33" width="8" height="8" fill="#555"/>
-          <text x="32" y="62" font-family="Arial, sans-serif" font-size="5" fill="#333" text-anchor="middle" letter-spacing="0.3">EQUAL HOUSING</text>
-          <text x="32" y="68" font-family="Arial, sans-serif" font-size="5" fill="#333" text-anchor="middle" letter-spacing="0.3">OPPORTUNITY</text>
+        <!-- Equal Housing Opportunity Logo -->
+        <svg width="60" height="72" viewBox="0 0 60 72" xmlns="http://www.w3.org/2000/svg" aria-label="Equal Housing Opportunity">
+          <rect width="60" height="72" fill="white"/>
+          <!-- House outline -->
+          <polygon points="30,4 2,24 10,24 10,56 50,56 50,24 58,24" fill="white" stroke="#002f6c" stroke-width="3" stroke-linejoin="round"/>
+          <!-- Roof fill -->
+          <polygon points="30,4 2,24 58,24" fill="#002f6c"/>
+          <!-- Door -->
+          <rect x="22" y="36" width="16" height="20" fill="#002f6c"/>
+          <!-- Left window -->
+          <rect x="8" y="30" width="10" height="10" fill="#002f6c"/>
+          <!-- Right window -->
+          <rect x="42" y="30" width="10" height="10" fill="#002f6c"/>
+          <!-- Text -->
+          <text x="30" y="64" font-family="Arial, sans-serif" font-size="5.5" font-weight="700" fill="#002f6c" text-anchor="middle" letter-spacing="0.3">EQUAL HOUSING</text>
+          <text x="30" y="70" font-family="Arial, sans-serif" font-size="5.5" font-weight="700" fill="#002f6c" text-anchor="middle" letter-spacing="0.3">OPPORTUNITY</text>
         </svg>
       </div>
     </div>
