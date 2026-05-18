@@ -6,456 +6,470 @@
   <title>About Art Chavez | Mortgage Broker & Realtor®</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #0a1f44;
-      --gold: #c9a84c;
-      --gold-light: #f0d080;
-      --white: #ffffff;
-      --off-white: #f7f7f5;
-      --text: #1a1a2e;
-      --text-light: #555570;
-      --border: #ddd;
+      --navy: #0a1628;
+      --gold: #c8963e;
+      --gold-light: #e0ad55;
+      --white: rgba(255,255,255,0.95);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Source Sans 3', sans-serif; color: var(--text); background: var(--white); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Montserrat, sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      background: var(--navy);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,22,40,0.96);
+      border-bottom: 1px solid rgba(200,150,62,0.25);
+      backdrop-filter: blur(6px);
     }
-    .nav-brand { display: flex; flex-direction: column; line-height: 1.2; text-decoration: none; }
-    .nav-name { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.15rem; }
-    .nav-sub { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-top { display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; }
+    .nav-brand .name { font-family: "Playfair Display", serif; font-size: 26px; color: var(--gold); display: block; line-height: 1; }
+    .nav-brand .sub { font-size: 11px; color: rgba(255,255,255,0.90); letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-top: 3px; white-space: nowrap; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; }
     .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .lang-toggle {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      border-radius: 4px;
-      padding: 4px 12px;
-      font-size: 0.78rem;
-      cursor: pointer;
-      letter-spacing: 0.06em;
-      transition: background 0.2s, color 0.2s;
-    }
-    .lang-toggle:hover { background: var(--gold); color: var(--navy); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .lang-toggle { display: flex; background: rgba(255,255,255,0.06); border: 1px solid rgba(200,150,62,0.25); border-radius: 20px; padding: 2px; }
+    .lang-btn { padding: 4px 14px; border-radius: 16px; font-size: 11px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); transition: all 0.2s; }
+    .lang-btn.active { background: var(--gold); color: var(--navy); }
+    .nav-phone-desktop { font-size: 15px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; letter-spacing: 0.04em; }
+    .nav-mobile-row1 { display: none; }
+    .nav-mobile-phone-strip { display: none; }
 
-    /* ── MOBILE NAV ── */
-    .nav-mobile { display: none; }
-    .hamburger { background: none; border: none; cursor: pointer; padding: 6px; display: flex; flex-direction: column; gap: 5px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-    .mobile-drawer {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--navy);
-      z-index: 200;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-    }
-    .mobile-drawer.open { display: flex; }
-    .mobile-drawer a { color: var(--white); text-decoration: none; font-size: 1.3rem; letter-spacing: 0.05em; }
-    .mobile-drawer a.active { color: var(--gold); }
-    .drawer-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
-    .drawer-lang { background: transparent; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; padding: 8px 20px; font-size: 1rem; cursor: pointer; }
-
-    /* ── HERO BANNER ── */
+    /* HERO */
     .about-hero {
-      background: var(--navy);
-      color: var(--white);
-      text-align: center;
-      padding: 64px 24px 56px;
-    }
-    .about-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 12px;
-    }
-    .about-hero p {
-      color: var(--gold);
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
-      max-width: 520px;
+      padding: 120px 48px 80px;
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    /* ── MAIN CONTENT ── */
-    .about-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 56px 24px 80px;
-    }
-
-    /* Bio section */
-    .bio-section { margin-bottom: 56px; }
-    .bio-section p {
-      font-size: 1.05rem;
-      line-height: 1.78;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-
-    /* Credentials grid */
-    .credentials-section { margin-bottom: 56px; }
-    .credentials-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--navy);
-      margin-bottom: 24px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--gold);
-    }
-    .cred-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
+      align-items: center;
     }
-    .cred-item {
-      background: var(--off-white);
-      border-left: 3px solid var(--gold);
-      padding: 16px 18px;
-      border-radius: 0 6px 6px 0;
-    }
-    .cred-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-light);
-      margin-bottom: 4px;
-    }
-    .cred-value {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.4;
-    }
-    .cred-sub {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      margin-top: 2px;
-    }
+    .about-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+    .about-hero h1 { font-family: "Playfair Display", serif; font-size: clamp(36px, 4.5vw, 54px); font-weight: 800; line-height: 1.08; margin-bottom: 24px; }
+    .about-hero h1 .accent { color: var(--gold); font-style: italic; }
+    .about-hero p { font-size: 15px; color: rgba(255,255,255,0.70); line-height: 1.85; margin-bottom: 18px; }
+    .about-hero p strong { color: var(--white); font-weight: 600; }
 
-    /* How I Work */
-    .how-section { margin-bottom: 56px; }
+    /* PHOTO */
+    .about-photo-col { display: flex; justify-content: center; align-items: flex-start; }
+    .about-photo-wrap { position: relative; width: 100%; max-width: 360px; margin-top: -24px; }
+    .about-photo-wrap img { width: 100%; border-radius: 8px; position: relative; z-index: 1; display: block; }
+    .about-photo-badge {
+      position: absolute; bottom: -20px; left: -20px;
+      background: var(--gold); color: var(--navy);
+      padding: 14px 20px; border-radius: 6px; z-index: 2;
+      font-weight: 700; font-size: 12px; line-height: 1.4; letter-spacing: 0.04em;
+    }
+    .about-photo-badge span { display: block; font-size: 10px; font-weight: 600; opacity: 0.75; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* CREDENTIALS */
+    .creds-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; }
+    .section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+    .section-label .label-line { flex: 1; height: 1px; background: rgba(200,150,62,0.20); }
+    .section-label .label-text { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+    .creds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 60px; }
+    .cred-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,150,62,0.18); border-radius: 8px; padding: 24px; }
+    .cred-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .cred-value { font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.4; }
+    .cred-sub { font-size: 12px; color: rgba(255,255,255,0.50); margin-top: 4px; }
+
+    /* HOW I WORK */
+    .how-section { margin-bottom: 60px; }
     .how-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--navy);
-      margin-bottom: 24px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--gold);
+      font-family: "Playfair Display", serif; font-size: 1.6rem;
+      color: var(--gold); margin-bottom: 24px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(200,150,62,0.25);
     }
     .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .how-card {
-      padding: 24px;
-      background: var(--off-white);
-      border-radius: 8px;
-      border-top: 3px solid var(--gold);
-    }
-    .how-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .how-card p { font-size: 0.92rem; line-height: 1.6; color: var(--text-light); }
+    .how-card { padding: 24px; background: rgba(255,255,255,0.04); border-radius: 8px; border-top: 3px solid var(--gold); }
+    .how-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .how-card p { font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.60); }
+
+    /* VALUES */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .value-item { display: flex; gap: 16px; align-items: flex-start; }
+    .value-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .value-text h3 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .value-text p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
 
     /* CTA */
-    .cta-section {
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 10px;
-      padding: 48px 36px;
-      text-align: center;
+    .cta-banner { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; }
+    .cta-inner {
+      background: rgba(200,150,62,0.08); border: 1px solid rgba(200,150,62,0.22);
+      border-radius: 10px; padding: 48px; text-align: center;
     }
-    .cta-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      margin-bottom: 12px;
-    }
-    .cta-section p { color: rgba(255,255,255,0.78); margin-bottom: 28px; font-size: 1rem; }
-    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--navy);
-      padding: 13px 28px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: background 0.2s;
-    }
-    .btn-gold:hover { background: var(--gold-light); }
-    .btn-outline {
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      padding: 11px 28px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: all 0.2s;
-    }
-    .btn-outline:hover { background: var(--gold); color: var(--navy); }
+    .cta-inner h2 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--white); margin-bottom: 12px; }
+    .cta-inner p { font-size: 14px; color: rgba(255,255,255,0.60); margin-bottom: 28px; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 30px; border-radius: 4px; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-ghost { background: transparent; color: var(--white); padding: 14px 30px; border-radius: 4px; font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.32); }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.65);
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 0.78rem;
-      line-height: 1.7;
-    }
-    .compliance-name { font-weight: 700; color: var(--white); font-size: 0.88rem; }
-    .compliance-sub { color: var(--gold); font-size: 0.8rem; }
-    footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
-    footer a:hover { color: var(--gold); }
+    /* TRUST BAR */
+    .trust-bar { background: rgba(255,255,255,0.04); border-top: 1px solid rgba(200,150,62,0.15); }
+    .trust-inner { max-width: 1200px; margin: 0 auto; padding: 14px 48px; display: flex; gap: 40px; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); text-transform: uppercase; }
+    .trust-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      nav { display: none; }
-      .nav-mobile {
-        display: flex;
-        background: var(--navy);
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      .nav-mobile-brand { display: flex; flex-direction: column; }
-      .nav-mobile-brand .nav-name { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1rem; }
-      .nav-mobile-brand .nav-sub { color: var(--gold); font-size: 0.65rem; letter-spacing: 0.07em; text-transform: uppercase; }
-      .cred-grid { grid-template-columns: 1fr; }
+    /* COMPLIANCE FOOTER */
+    .compliance-footer { background: rgba(0,0,0,0.35); border-top: 1px solid rgba(200,150,62,0.20); margin-top: 0; }
+    .compliance-inner { max-width: 1200px; margin: 0 auto; padding: 48px 48px 32px; }
+    .compliance-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid rgba(200,150,62,0.12); }
+    .compliance-brand .compliance-name { font-family: "Playfair Display", serif; font-size: 22px; color: var(--gold); display: block; line-height: 1; }
+    .compliance-brand .compliance-sub { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-top: 6px; }
+    .compliance-logos { display: flex; align-items: center; gap: 24px; }
+    .compliance-logo-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(200,150,62,0.18); border-radius: 4px; padding: 8px 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.60); text-align: center; line-height: 1.4; }
+    .compliance-section { margin-bottom: 16px; }
+    .compliance-disclosure { font-size: 11px; color: rgba(255,255,255,0.40); line-height: 1.7; }
+    .compliance-disclosure a { color: rgba(200,150,62,0.70); text-decoration: none; }
+    .compliance-disclosure a:hover { color: var(--gold); }
+    .compliance-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: rgba(255,255,255,0.30); flex-wrap: wrap; gap: 8px; }
+
+    /* MOBILE */
+    @media (max-width: 960px) {
+      html, body { overflow-x: hidden; }
+      .nav-top { display: none; }
+      .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; }
+      .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 26px; color: #e0ad55; display: block; line-height: 1; text-align: center; }
+      .nav-mobile-brand .sub { font-size: 11px; white-space: nowrap; color: #ffffff; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; }
+      .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
+      .nav-mobile-phone-strip a { font-size: 12px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+      .mobile-lang-text { display: flex; align-items: center; gap: 4px; }
+      .mobile-lang-btn { background: transparent; border: none; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); cursor: pointer; padding: 2px 4px; letter-spacing: 0.08em; }
+      .mobile-lang-btn.active { color: var(--gold); }
+      .about-hero { grid-template-columns: 1fr; padding: 110px 20px 40px; gap: 40px; }
+      .about-photo-col { order: -1; }
+      .about-photo-wrap { max-width: 280px; margin: 0 auto; }
+      .about-photo-badge { bottom: -16px; left: -10px; padding: 10px 14px; }
+      .creds-section { padding: 0 20px 60px; }
+      .creds-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .cred-card { padding: 16px; }
       .how-grid { grid-template-columns: 1fr; }
-      .about-wrap { padding: 36px 18px 60px; }
-      .cta-section { padding: 36px 20px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .cta-banner { padding: 0 20px 60px; }
+      .cta-inner { padding: 32px 20px; }
+      .trust-inner { padding: 12px 16px; gap: 8px; flex-direction: column; align-items: flex-start; }
+      .trust-item { font-size: 10px; }
+      .compliance-inner { padding: 32px 20px 24px; }
+      .compliance-top { flex-direction: column; gap: 20px; }
+      .compliance-bottom { flex-direction: column; align-items: flex-start; }
     }
+
+    /* HAMBURGER */
+    .hamburger-btn { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .hamburger-btn span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    @media (max-width: 960px) { .hamburger-btn { display: flex; } }
+    .mobile-drawer {
+      display: none; flex-direction: column;
+      position: fixed; top: 0; left: 0; right: 0;
+      background: #0d1f3c;
+      border-top: 1px solid rgba(200,150,62,0.2);
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a { padding: 13px 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-drawer a:hover { color: #c8963e; }
+    .drawer-apply { margin: 12px 16px 14px; border-radius: 4px; background: #c8963e; color: #0d1f3c; text-align: center; font-weight: 800; border-bottom: none !important; padding: 12px 20px; }
+    .drawer-apply:hover { background: #e0ad55 !important; color: #0d1f3c !important; }
   </style>
 </head>
 <body>
 
-  <!-- Desktop Nav -->
-  <nav>
-    <a class="nav-brand" href="index.html">
-      <span class="nav-name">Art Chavez</span>
-      <span class="nav-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker de Hipotecas · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+<!-- NAV DESKTOP -->
+<nav>
+  <div class="nav-top">
+    <a href="/index.html" style="text-decoration:none;">
+      <div class="nav-brand">
+        <span class="name">Art Chavez</span>
+        <span class="sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+      </div>
     </a>
     <div class="nav-links">
-      <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-      <a href="about.html" class="active" data-en="About" data-es="Acerca de">About</a>
-      <a href="services.html" data-en="Services" data-es="Servicios">Services</a>
-      <a href="faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
-      <a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a>
-      <button class="lang-toggle" onclick="toggleLang()" id="langBtn">ES</button>
+      <a href="/index.html" data-en="Home" data-es="Inicio">Home</a>
+      <a href="/services.html" data-en="Services" data-es="Servicios">Services</a>
+      <a href="/calculators.html" data-en="Calculators" data-es="Calculadoras">Calculators</a>
+      <a href="/about.html" class="active" data-en="About" data-es="Acerca de">About</a>
+      <a href="/faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
+      <a href="/contact.html" data-en="Contact" data-es="Contacto">Contact</a>
     </div>
-  </nav>
+    <div class="nav-right">
+      <a href="tel:9718375296" class="nav-phone-desktop">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.3 11.87a19.79 19.79 0 01-3.07-8.67A2 2 0 012.2 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.27a16 16 0 006.29 6.29l1.63-1.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.1v1.82z"/></svg>
+        971-837-5296
+      </a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="langBtnEN" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="langBtnES" onclick="setLanguage('es')">ES</button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Mobile Nav -->
-  <div class="nav-mobile">
-    <a class="nav-brand" href="index.html">
-      <span class="nav-name">Art Chavez</span>
-      <span class="nav-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker de Hipotecas · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+  <!-- NAV MOBILE ROW 1 -->
+  <div class="nav-mobile-row1">
+    <div class="nav-mobile-brand">
+      <span class="name">Art Chavez</span>
+      <span class="sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+    </div>
+  </div>
+  <div class="nav-mobile-phone-strip">
+    <a href="tel:9718375296">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.3 11.87a19.79 19.79 0 01-3.07-8.67A2 2 0 012.2 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.27a16 16 0 006.29 6.29l1.63-1.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.1v1.82z"/></svg>
+      <span data-en="Call or Text · 971-837-5296" data-es="Llame o Escriba · 971-837-5296">Call or Text · 971-837-5296</span>
     </a>
-    <div style="display:flex;gap:10px;align-items:center;">
-      <button class="lang-toggle" onclick="toggleLang()" id="langBtnMobile">ES</button>
-      <button class="hamburger" onclick="openDrawer()">
+    <div class="mobile-lang-text">
+      <button class="mobile-lang-btn active" id="mobileLangEN" onclick="setLanguage('en')">EN</button>
+      <span style="color:rgba(255,255,255,0.25);font-size:10px;">|</span>
+      <button class="mobile-lang-btn" id="mobileLangES" onclick="setLanguage('es')">ES</button>
+      <button class="hamburger-btn" onclick="toggleDrawer()" id="hamburger" style="margin-left:8px;">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
+</nav>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
-    <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-    <a href="about.html" class="active" data-en="About" data-es="Acerca de">About</a>
-    <a href="services.html" data-en="Services" data-es="Servicios">Services</a>
-    <a href="faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
-    <a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a>
-    <button class="drawer-lang" onclick="toggleLang(); closeDrawer();" id="langBtnDrawer">ES</button>
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="/index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="/services.html" data-en="Services" data-es="Servicios">Services</a>
+  <a href="/calculators.html" data-en="Calculators" data-es="Calculadoras">Calculators</a>
+  <a href="/about.html" data-en="About" data-es="Acerca de">About</a>
+  <a href="/faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
+  <a href="/contact.html" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="/contact.html" class="drawer-apply" data-en="Get Pre-Approved" data-es="Obtener Preaprobación">Get Pre-Approved</a>
+</div>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="about-text-col">
+    <span class="about-eyebrow" data-en="About Art Chavez" data-es="Sobre Art Chavez">About Art Chavez</span>
+    <h1 data-en="Built on Two Worlds. <span class='accent'>Driven</span> by One Purpose." data-es="Forjado en Dos Mundos. <span class='accent'>Impulsado</span> por un Solo Propósito.">Built on Two Worlds. <span class="accent">Driven</span> by One Purpose.</h1>
+    <p data-en="As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world — and that experience didn't just shape who I am. It shaped how I serve people."
+       data-es="A los cinco años llegué a los Estados Unidos desde Guadalajara, México, y crecí en Pasco, Washington. Aprendí rápidamente a navegar entre dos idiomas, dos culturas y dos formas de ver el mundo; una experiencia que no solo moldeó quién soy, sino que también definió la manera en que sirvo a las personas.">
+      As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world — and that experience didn't just shape who I am. It shaped how I serve people.
+    </p>
+    <p data-en="I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services — US Bank in 1999, then KeyBank — before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity."
+       data-es="Comencé a trabajar en la industria de la hospitalidad a los 15 años, aprendiendo desde temprano que servir bien a los demás es una habilidad que se desarrolla, no un simple rasgo de personalidad. Esa base me llevó a los servicios financieros: ingresé a US Bank en 1999, luego a KeyBank, antes de dar el paso al sector hipotecario en 2004.">
+      I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services — US Bank in 1999, then KeyBank — before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity.
+    </p>
+  </div>
+  <div class="about-photo-col">
+    <div class="about-photo-wrap">
+      <img src="untitled-1233-removebg.png" alt="Art Chavez – Mortgage Broker and Realtor® in Beaverton, Oregon" />
+      <div class="about-photo-badge">
+        20+ Years<span>In Mortgage &amp; Real Estate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIALS -->
+<div class="creds-section">
+  <div class="section-label">
+    <div class="label-line"></div>
+    <span class="label-text" data-en="Credentials &amp; Licenses" data-es="Credenciales y Licencias">Credentials &amp; Licenses</span>
+    <div class="label-line"></div>
   </div>
 
-  <!-- Hero -->
-  <section class="about-hero">
-    <h1 data-en="About Art Chavez" data-es="Sobre Art Chavez">About Art Chavez</h1>
-    <p data-en="Built on Two Worlds. Driven by One Purpose." data-es="Forjado en Dos Mundos. Impulsado por un Solo Propósito.">Built on Two Worlds. Driven by One Purpose.</p>
-  </section>
-
-  <div class="about-wrap">
-
-    <!-- Bio -->
-    <div class="bio-section">
-      <p data-en="As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world — and that experience didn't just shape who I am. It shaped how I serve people."
-         data-es="A los cinco años llegué a los Estados Unidos desde Guadalajara, México, y crecí en Pasco, Washington. Aprendí rápidamente a navegar entre dos idiomas, dos culturas y dos formas de ver el mundo; una experiencia que no solo moldeó quién soy, sino que también definió la manera en que sirvo a las personas.">
-        As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world — and that experience didn't just shape who I am. It shaped how I serve people.
-      </p>
-      <p data-en="I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services — US Bank in 1999, then KeyBank — before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families — particularly Spanish-speaking clients — who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work."
-         data-es="Comencé a trabajar en la industria de la hospitalidad a los 15 años, aprendiendo desde temprano que servir bien a los demás es una habilidad que se desarrolla, no un simple rasgo de personalidad. Esa base me llevó a los servicios financieros: ingresé a US Bank en 1999, luego a KeyBank, antes de dar el paso al sector hipotecario en 2004. Durante más de veinte años, he ayudado a cientos de familias a comprar casas, refinanciar y generar patrimonio. Muchas de ellas han sido familias bilingües, especialmente clientes de habla hispana, que nunca habían trabajado con alguien que entendiera tanto su situación financiera como su trasfondo cultural. Cerrar esa brecha es exactamente la razón por la que hago este trabajo.">
-        I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services — US Bank in 1999, then KeyBank — before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families — particularly Spanish-speaking clients — who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work.
-      </p>
-      <p data-en="Adding my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage — one relationship, one conversation, one advisor from start to close."
-         data-es="Obtener mi licencia de bienes raíces en 2026 fue una decisión respaldada por veinte años de guiar a compradores a través de uno de los compromisos financieros más importantes de sus vidas. Mientras más entendía el proceso, más claramente veía el valor que un asesor completamente integrado podía ofrecer. Eso es la Ventaja Casalink: una sola relación, una sola conversación y un asesor de principio a fin.">
-        Adding my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage — one relationship, one conversation, one advisor from start to close.
-      </p>
-      <p data-en="As an independent mortgage broker with access to more than 220 wholesale mortgage lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits — and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply — that transparent guidance, even when difficult, is the highest form of service."
-         data-es="Como corredor hipotecario independiente con acceso a más de 220 prestamistas mayoristas, mi lealtad está con sus resultados, no con una institución. Busco en el mercado el financiamiento que realmente se adapte a cada caso y aporto esa misma objetividad a cada decisión inmobiliaria. Dos décadas en este negocio han reforzado algo en lo que creo profundamente: la orientación transparente, incluso cuando es difícil, es la forma más elevada de servicio.">
-        As an independent mortgage broker with access to more than 220 wholesale mortgage lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits — and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply — that transparent guidance, even when difficult, is the highest form of service.
-      </p>
-      <p data-en="When away from the office, I enjoy coaching my kids' sports and occasionally substitute teaching (K–12) for the Hillsboro School District. I've been happily married for 10 years to my wonderful wife Shannon, and we have two incredible sons, Braylon and Evan. We also share our home with Ginger, our Jack Russell-Chihuahua mix who runs the household and takes her cuddling responsibilities very seriously."
-         data-es="Fuera de la oficina, disfruto ayudar como entrenador en los deportes de mis hijos y, ocasionalmente, me desempeño como maestro sustituto con licencia (K–12) para el Distrito Escolar de Hillsboro. Estoy felizmente casado desde hace 10 años con mi maravillosa esposa, Shannon, y tenemos dos hijos increíbles, Braylon y Evan. También compartimos nuestro hogar con Ginger, nuestra mezcla de Jack Russell y Chihuahua que manda en la casa y se toma muy en serio sus responsabilidades de acurrucarse con nosotros.">
-        When away from the office, I enjoy coaching my kids' sports and occasionally substitute teaching (K–12) for the Hillsboro School District. I've been happily married for 10 years to my wonderful wife Shannon, and we have two incredible sons, Braylon and Evan. We also share our home with Ginger, our Jack Russell-Chihuahua mix who runs the household and takes her cuddling responsibilities very seriously.
-      </p>
+  <div class="creds-grid">
+    <div class="cred-card">
+      <div class="cred-label" data-en="Loan Originator License" data-es="Licencia de Originador de Préstamos">Loan Originator License</div>
+      <div class="cred-value">NMLS #290748</div>
+      <div class="cred-sub" data-en="Oregon Mortgage Loan Originator" data-es="Originador de Préstamos de Oregon">Oregon Mortgage Loan Originator</div>
     </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="Mortgage Company" data-es="Compañía Hipotecaria">Mortgage Company</div>
+      <div class="cred-value">Client Direct Mortgage</div>
+      <div class="cred-sub">NMLS #1065732 · 2700 Ygnacio Valley Rd, Suite 255 · Walnut Creek, CA 94598</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="Real Estate License" data-es="Licencia de Bienes Raíces">Real Estate License</div>
+      <div class="cred-value">#201261235</div>
+      <div class="cred-sub" data-en="Oregon Licensed Agent" data-es="Agente Licenciado de Oregon">Oregon Licensed Agent</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="Real Estate Agency" data-es="Agencia de Bienes Raíces">Real Estate Agency</div>
+      <div class="cred-value">All Professionals Real Estate</div>
+      <div class="cred-sub">Lic #201216935 · 20001 SW Tualatin Valley Hwy · Beaverton, OR 97003</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="Lender Network" data-es="Red de Prestamistas">Lender Network</div>
+      <div class="cred-value" data-en="220+ Lenders" data-es="Más de 220 Prestamistas">220+ Lenders</div>
+      <div class="cred-sub" data-en="Wholesale access, not retail captive" data-es="Acceso mayorista, sin ataduras bancarias">Wholesale access, not retail captive</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="In Financial Services Since" data-es="En Servicios Financieros Desde">In Financial Services Since</div>
+      <div class="cred-value">1999</div>
+      <div class="cred-sub" data-en="Retail banking 1999–2004 · Mortgage lending 2004–present" data-es="Banca minorista 1999–2004 · Préstamos hipotecarios 2004–presente">Retail banking 1999–2004 · Mortgage lending 2004–present</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="Languages" data-es="Idiomas">Languages</div>
+      <div class="cred-value" data-en="English &amp; Spanish" data-es="Inglés y Español">English &amp; Spanish</div>
+      <div class="cred-sub" data-en="Fully bilingual service" data-es="Servicio completamente bilingüe">Fully bilingual service</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-label" data-en="Education" data-es="Educación">Education</div>
+      <div class="cred-value" data-en="B.A. – Washington State University" data-es="Licenciatura – Washington State University">B.A. – Washington State University</div>
+      <div class="cred-sub" data-en="English &amp; Business · Also attended Gonzaga University" data-es="Inglés y Negocios · También asistió a Gonzaga University">English &amp; Business · Also attended Gonzaga University</div>
+    </div>
+  </div>
 
-    <!-- Credentials -->
-    <div class="credentials-section">
-      <h2 data-en="Credentials &amp; Licenses" data-es="Credenciales y Licencias">Credentials &amp; Licenses</h2>
-      <div class="cred-grid">
-        <div class="cred-item">
-          <div class="cred-label" data-en="Loan Originator License" data-es="Licencia de Originador de Préstamos">Loan Originator License</div>
-          <div class="cred-value">290748</div>
-          <div class="cred-sub" data-en="Oregon Mortgage Loan Originator" data-es="Originador de Préstamos de Oregon">Oregon Mortgage Loan Originator</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="Mortgage Company" data-es="Compañía Hipotecaria">Mortgage Company</div>
-          <div class="cred-value">Client Direct Mortgage</div>
-          <div class="cred-sub">NMLS #1065732 · 2700 Ygnacio Valley Rd, Suite 255 · Walnut Creek, CA 94598</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="Real Estate License" data-es="Licencia de Bienes Raíces">Real Estate License</div>
-          <div class="cred-value">201261235</div>
-          <div class="cred-sub" data-en="Oregon Licensed Agent" data-es="Agente Licenciado de Oregon">Oregon Licensed Agent</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="Real Estate Agency" data-es="Agencia de Bienes Raíces">Real Estate Agency</div>
-          <div class="cred-value">All Professionals Real Estate</div>
-          <div class="cred-sub">Lic #201216935 · 20001 SW Tualatin Valley Hwy · Beaverton, OR 97003</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="Lender Network" data-es="Red de Prestamistas">Lender Network</div>
-          <div class="cred-value" data-en="220+ Lenders" data-es="Más de 220 prestamistas">220+ Lenders</div>
-          <div class="cred-sub" data-en="Wholesale access, not retail captive" data-es="Acceso a canales mayoristas, sin las limitaciones de la banca minorista tradicional">Wholesale access, not retail captive</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="In Financial Services Since" data-es="En Servicios Financieros Desde">In Financial Services Since</div>
-          <div class="cred-value">1999</div>
-          <div class="cred-sub" data-en="Retail banking 1999–2004 · Mortgage lending 2004–present" data-es="Banca minorista 1999–2004 · Préstamos hipotecarios 2004–presente">Retail banking 1999–2004 · Mortgage lending 2004–present</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="Languages" data-es="Idiomas">Languages</div>
-          <div class="cred-value" data-en="English &amp; Spanish" data-es="Inglés y Español">English &amp; Spanish</div>
-          <div class="cred-sub" data-en="Fully bilingual service" data-es="Servicio completamente bilingüe">Fully bilingual service</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-label" data-en="Education" data-es="Educación">Education</div>
-          <div class="cred-value" data-en="B.A. – Washington State University" data-es="Licenciatura – Washington State University">B.A. – Washington State University</div>
-          <div class="cred-sub" data-en="English &amp; Business · Also attended Gonzaga University" data-es="Inglés y Negocios · También asistió a Gonzaga University">English &amp; Business · Also attended Gonzaga University</div>
-        </div>
+  <!-- HOW I WORK -->
+  <div class="how-section">
+    <div class="section-label">
+      <div class="label-line"></div>
+      <span class="label-text" data-en="How I Work" data-es="Cómo Trabajo">How I Work</span>
+      <div class="label-line"></div>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <h3 data-en="Transparent over easy" data-es="Transparencia antes que facilidad">Transparent over easy</h3>
+        <p data-en="Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position."
+           data-es="Cada recomendación que hago se evalúa bajo un solo estándar: lo que realmente beneficia la posición financiera a largo plazo del cliente.">
+          Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position.
+        </p>
+      </div>
+      <div class="how-card">
+        <h3 data-en="Underwritten before it's written" data-es="Preaprobado antes de hacer una oferta">Underwritten before it's written</h3>
+        <p data-en="Your mortgage financing is pre-approved through Fannie Mae, Freddie Mac or FHA TOTAL Mortgage Scorecard before you write an offer. That gives you negotiating power and eliminates financing contingency risk."
+           data-es="Su financiamiento hipotecario se preaprueba a través de Fannie Mae, Freddie Mac o el Sistema de Puntuación Total de Hipotecas de la FHA antes de que haga una oferta. Esto le da mayor poder de negociación y elimina el riesgo de contingencias de financiamiento.">
+          Your mortgage financing is pre-approved through Fannie Mae, Freddie Mac or FHA TOTAL Mortgage Scorecard before you write an offer. That gives you negotiating power and eliminates financing contingency risk.
+        </p>
+      </div>
+      <div class="how-card">
+        <h3 data-en="One advisor, fully guided" data-es="Un asesor, guía completa">One advisor, fully guided</h3>
+        <p data-en="Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors."
+           data-es="Gestionar tanto la hipoteca como el proceso inmobiliario bajo un mismo techo significa que cada detalle está cubierto: sin vacíos, sin malentendidos y sin transferencias fallidas entre distintos asesores.">
+          Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors.
+        </p>
+      </div>
+      <div class="how-card">
+        <h3 data-en="Bilingual from day one" data-es="Bilingüe desde el primer día">Bilingual from day one</h3>
+        <p data-en="Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard."
+           data-es="Los clientes de habla hispana reciben la misma profundidad de orientación, las mismas explicaciones y el mismo nivel de acceso, no un simple resumen traducido de lo que se les explica a los clientes en inglés.">
+          Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2 data-en="Ready to work together?" data-es="¿Listo para que trabajemos juntos?">Ready to work together?</h2>
+    <p data-en="15 minutes on the phone is all it takes to know exactly where you stand." data-es="Una llamada de 15 minutos es todo lo que se necesita para saber exactamente dónde está parado.">
+      15 minutes on the phone is all it takes to know exactly where you stand.
+    </p>
+    <div class="cta-buttons">
+      <a class="btn-primary" href="tel:9718375296" data-en="Call or Text 971-837-5296" data-es="Llame o Escriba al 971-837-5296">Call or Text 971-837-5296</a>
+      <a class="btn-ghost" href="mailto:art@artchavez.com">art@artchavez.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <span data-en="20+ Years Experience" data-es="Más de 20 Años de Experiencia">20+ Years Experience</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <span data-en="220+ Wholesale Lenders" data-es="Más de 220 Prestamistas Mayoristas">220+ Wholesale Lenders</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <span data-en="Bilingual EN / ES" data-es="Bilingüe EN / ES">Bilingual EN / ES</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <span data-en="Licensed Mortgage Broker + Realtor®" data-es="Corredor Hipotecario y Agente de Bienes Raíces">Licensed Mortgage Broker + Realtor®</span>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLIANCE FOOTER -->
+<footer class="compliance-footer">
+  <div class="compliance-inner">
+    <div class="compliance-top">
+      <div class="compliance-brand">
+        <span class="compliance-name">Art Chavez</span>
+        <span class="compliance-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+      </div>
+      <div class="compliance-logos">
+        <div class="compliance-logo-badge">Equal<br>Housing<br>Lender</div>
+        <div class="compliance-logo-badge">Fair<br>Housing<br>Act</div>
       </div>
     </div>
 
-    <!-- How I Work -->
-    <div class="how-section">
-      <h2 data-en="How I Work" data-es="Cómo Trabajo">How I Work</h2>
-      <div class="how-grid">
-        <div class="how-card">
-          <h3 data-en="Transparent over easy" data-es="Transparencia antes que facilidad">Transparent over easy</h3>
-          <p data-en="Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position."
-             data-es="Cada recomendación que hago se evalúa bajo un solo estándar: lo que realmente beneficia la posición financiera a largo plazo del cliente.">
-            Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position.
-          </p>
-        </div>
-        <div class="how-card">
-          <h3 data-en="Underwritten before it's written" data-es="Preaprobado antes de hacer una oferta">Underwritten before it's written</h3>
-          <p data-en="Your mortgage financing is pre-approved through Fannie Mae, Freddie Mac or FHA TOTAL Mortgage Scorecard before you write an offer. That gives you negotiating power and eliminates financing contingency risk."
-             data-es="Su financiamiento hipotecario se preaprueba a través de Fannie Mae, Freddie Mac o el Sistema de Puntuación Total de Hipotecas de la FHA antes de que haga una oferta. Esto le da mayor poder de negociación y elimina el riesgo de contingencias de financiamiento.">
-            Your mortgage financing is pre-approved through Fannie Mae, Freddie Mac or FHA TOTAL Mortgage Scorecard before you write an offer. That gives you negotiating power and eliminates financing contingency risk.
-          </p>
-        </div>
-        <div class="how-card">
-          <h3 data-en="One advisor, fully guided" data-es="Un asesor, guía completa">One advisor, fully guided</h3>
-          <p data-en="Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors."
-             data-es="Gestionar tanto la hipoteca como el proceso inmobiliario bajo un mismo techo significa que cada detalle está cubierto: sin vacíos, sin malentendidos y sin transferencias fallidas entre distintos asesores.">
-            Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors.
-          </p>
-        </div>
-        <div class="how-card">
-          <h3 data-en="Bilingual from day one" data-es="Bilingüe desde el primer día">Bilingual from day one</h3>
-          <p data-en="Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard."
-             data-es="Los clientes de habla hispana reciben la misma profundidad de orientación, las mismas explicaciones y el mismo nivel de acceso, no un simple resumen traducido de lo que se les explica a los clientes en inglés.">
-            Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-section">
-      <h2 data-en="Ready to work together?" data-es="¿Listo para que trabajemos juntos?">Ready to work together?</h2>
-      <p data-en="15 minutes on the phone is all it takes to know exactly where you stand." data-es="Una llamada de 15 minutos es todo lo que se necesita para saber exactamente dónde está parado económicamente.">
-        15 minutes on the phone is all it takes to know exactly where you stand.
+    <div class="compliance-section">
+      <p class="compliance-disclosure">
+        Art Chavez | NMLS #290748 | Oregon Loan Originator License &middot;
+        Client Direct Mortgage / Mortgage Solutions FCS Inc. | NMLS #1065732 |
+        2700 Ygnacio Valley Rd, Suite 255, Walnut Creek, CA 94598 &middot;
+        Licensed Real Estate Agent | License #201261235 |
+        All Professionals Real Estate | License #201216935 |
+        20001 SW Tualatin Valley Hwy, Beaverton, OR 97003
       </p>
-      <div class="cta-buttons">
-        <a class="btn-gold" href="tel:9718375296" data-en="Call or Text 971-837-5296" data-es="Llame o envíe un mensaje al 971-837-5296">Call or Text 971-837-5296</a>
-        <a class="btn-outline" href="mailto:art@artchavez.com">art@artchavez.com</a>
-      </div>
     </div>
 
-  </div><!-- /about-wrap -->
-
-  <!-- Footer -->
-  <footer>
-    <div class="compliance-name" data-en="Art Chavez" data-es="Art Chavez">Art Chavez</div>
-    <div class="compliance-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker de Hipotecas · Agente de Bienes Raíces">Mortgage Broker · Realtor®</div>
-    <div style="margin-top:10px;">
-      <span data-en="NMLS #290748 · Company NMLS #1065732" data-es="NMLS #290748 · Empresa NMLS #1065732">NMLS #290748 · Company NMLS #1065732</span><br/>
-      <span data-en="Oregon Licensed Mortgage Broker · Oregon Licensed Real Estate Agent #201261235" data-es="Corredor Hipotecario con Licencia de Oregon · Agente de Bienes Raíces con Licencia de Oregon #201261235">Oregon Licensed Mortgage Broker · Oregon Licensed Real Estate Agent #201261235</span><br/>
-      <a href="tel:9718375296">971-837-5296</a> ·
-      <a href="mailto:art@artchavez.com">art@artchavez.com</a><br/>
-      <span data-en="© 2025 Art Chavez. All rights reserved." data-es="© 2025 Art Chavez. Todos los derechos reservados.">© 2025 Art Chavez. All rights reserved.</span>
+    <div class="compliance-section">
+      <p class="compliance-disclosure">
+        Verify our mortgage lending licenses at the
+        <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/290748" target="_blank" rel="noopener">NMLS Consumer Access Registry</a>.
+        This is not a commitment to lend. Loan approval is subject to credit review and underwriting guidelines.
+        Programs, rates, and terms are subject to change without notice. All loans are subject to property approval.
+      </p>
     </div>
-  </footer>
 
-  <script>
-    // ── Language toggle ──
-    function setLanguage(lang) {
-      document.querySelectorAll('[data-en]').forEach(el => {
+    <div class="compliance-bottom">
+      <span>&copy; 2026 Art Chavez. All rights reserved.</span>
+      <span>Beaverton, Oregon &middot; Serving the greater Portland metro area</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setLanguage(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (el.tagName === 'H1') {
+        el.innerHTML = lang === 'es' ? el.dataset.es : el.dataset.en;
+      } else {
         el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
-      });
-      ['langBtn','langBtnMobile','langBtnDrawer'].forEach(id => {
-        const btn = document.getElementById(id);
-        if (btn) btn.textContent = lang === 'es' ? 'EN' : 'ES';
-      });
-      document.documentElement.lang = lang === 'es' ? 'es' : 'en';
-      localStorage.setItem('lang', lang);
-    }
-
-    function toggleLang() {
-      const current = localStorage.getItem('lang') || 'en';
-      setLanguage(current === 'en' ? 'es' : 'en');
-    }
-
-    // ── Mobile drawer ──
-    function openDrawer() { document.getElementById('mobileDrawer').classList.add('open'); }
-    function closeDrawer() { document.getElementById('mobileDrawer').classList.remove('open'); }
-
-    // ── On load: respect saved language ──
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('lang') || 'en';
-      setLanguage(saved);
+      }
     });
-  </script>
+    // Update EN/ES button states
+    ['langBtnEN','mobileLangEN'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.toggle('active', lang === 'en');
+    });
+    ['langBtnES','mobileLangES'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.toggle('active', lang === 'es');
+    });
+    document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+    localStorage.setItem('lang', lang);
+  }
+
+  function toggleDrawer() {
+    var drawer = document.getElementById('mobileDrawer');
+    var nav = document.querySelector('nav');
+    var navHeight = nav.getBoundingClientRect().height;
+    drawer.style.top = navHeight + 'px';
+    drawer.classList.toggle('open');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('lang') || 'en';
+    setLanguage(saved);
+  });
+</script>
 </body>
 </html>
