@@ -900,6 +900,7 @@ function calcRefinance() {
 var currentLang = 'en';
 function setLang(lang) {
   currentLang = lang;
+  document.title = lang === 'es' ? 'Calculadoras de Hipoteca | Art Chavez' : 'Mortgage Calculators | Art Chavez';
   document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
     var val = el.getAttribute('data-' + lang);
     if (el.tagName === 'INPUT' || el.tagName === 'SELECT') return;
