@@ -51,7 +51,8 @@
 
   /* CASALINK BADGE */
   .casalink-badge { display: inline-flex; flex-direction: column; gap: 8px; border-left: 3px solid var(--gold); border-right: 3px solid var(--gold); margin-bottom: 26px; background: rgba(200,150,62,0.10); padding: 14px 24px; border-radius: 6px; align-items: center; text-align: center; width: 100%; }
-  .casalink-badge .b-brand { font-family: "Playfair Display", serif; font-style: italic; font-size: 56px; font-weight: 700; color: var(--gold); display: flex; align-items: center; gap: 7px; line-height: 1; text-shadow: 0 0 20px rgba(200,150,62,0.3); }
+  .casalink-badge .b-brand { font-family: "Playfair Display", serif; font-style: italic; font-size: 56px; font-weight: 700; color: var(--gold); display: flex; align-items: baseline; gap: 7px; line-height: 1; text-shadow: 0 0 20px rgba(200,150,62,0.3); white-space: nowrap; }
+  .casalink-badge .b-brand .brand-article { font-size: 0.5em; }
   .casalink-badge .b-desc { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.90); letter-spacing: 0.10em; text-transform: uppercase; }
   .casalink-badge .b-desc .gold { color: var(--gold); }
 
@@ -107,7 +108,7 @@
     }
 
     .mobile-badge-section { display: flex; justify-content: center; padding: 8px 16px 0; width: 100%; order: 1; }
-    .casalink-badge .b-brand { font-size: 18px; }
+    .casalink-badge .b-brand { font-size: 28px; }
     .mobile-badge-section .casalink-badge { width: 100%; max-width: 100%; }
     .casalink-badge .b-desc { font-size: 9px; white-space: normal; letter-spacing: 0.06em; }
 
@@ -326,7 +327,7 @@
         <button class="lang-btn active">EN</button>
         <button class="lang-btn">ES</button>
       </div>
-      <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="nav-apply-btn" data-en="Apply Now" data-es="Solicitar Ahora">Apply Now</a>
+      <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="nav-apply-btn" data-en="Apply Now" data-es="Solicita Hoy">Apply Now</a>
     </div>
   </div>
   <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px; width: 100%; box-sizing: border-box;">
@@ -349,7 +350,7 @@
       <span style="color:rgba(200,150,62,0.4);font-size:10px;">|</span>
       <button class="mobile-lang-btn">ES</button>
     </div>
-    <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" style="background:var(--gold);color:var(--navy);padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;flex-shrink:0;flex:1;text-align:right;" data-en="Apply Now" data-es="Solicitar Ahora">Apply Now</a>
+    <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" style="background:var(--gold);color:var(--navy);padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;flex-shrink:0;flex:1;text-align:right;" data-en="Apply Now" data-es="Solicita Hoy">Apply Now</a>
   </div>
   <div class="mobile-drawer" id="mobileDrawer">
     <a href="https://www.artchavez.com/index.html" data-en="Home" data-es="Inicio">Home</a>
@@ -358,7 +359,7 @@
     <a href="https://www.artchavez.com/about.html" data-en="About" data-es="Acerca de mí">About</a>
     <a href="https://www.artchavez.com/faq.html" data-en="FAQ" data-es="Preguntas Frecuentes">FAQ</a>
     <a href="https://www.artchavez.com/contact.html" data-en="Contact" data-es="Contacto">Contact</a>
-    <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="drawer-apply" data-en="Apply Now" data-es="Solicitar Ahora">Apply Now</a>
+    <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="drawer-apply" data-en="Apply Now" data-es="Solicita Hoy">Apply Now</a>
   </div>
 </nav>
 
@@ -369,10 +370,7 @@
 
     <div class="mobile-badge-section">
       <div class="casalink-badge">
-        <div class="b-brand">
-          Casalink
-          Advantage
-        </div>
+        <div class="b-brand"><span class="brand-article" data-en="the" data-es="la">the</span> <span class="brand-main" data-en="Casalink Advantage" data-es="Ventaja Casalink">Casalink Advantage</span></div>
         <div class="b-desc"><span data-en="Mortgage + Real Estate &nbsp;&middot;&nbsp; One Advisor &nbsp;&middot;&nbsp; Fully Guided" data-es="Hipoteca + Bienes Raíces &nbsp;&middot;&nbsp; Un Asesor &nbsp;&middot;&nbsp; Guía Completa">Mortgage <span class="gold">+</span> Real Estate &nbsp;&middot;&nbsp; One Advisor &nbsp;&middot;&nbsp; Fully Guided</span></div>
       </div>
     </div>
@@ -384,10 +382,7 @@
 
     <div class="hero-text">
       <div class="casalink-badge">
-        <div class="b-brand">
-          Casalink
-          Advantage
-        </div>
+        <div class="b-brand"><span class="brand-article" data-en="the" data-es="la">the</span> <span class="brand-main" data-en="Casalink Advantage" data-es="Ventaja Casalink">Casalink Advantage</span></div>
         <div class="b-desc"><span data-en="Mortgage + Real Estate &nbsp;&middot;&nbsp; One Advisor &nbsp;&middot;&nbsp; Fully Guided" data-es="Hipoteca + Bienes Raíces &nbsp;&middot;&nbsp; Un Asesor &nbsp;&middot;&nbsp; Guía Completa">Mortgage <span class="gold">+</span> Real Estate &nbsp;&middot;&nbsp; One Advisor &nbsp;&middot;&nbsp; Fully Guided</span></div>
       </div>
       <h1 class="hero-heading" id="hero-heading">Underwritten<br>before it&apos;s <span class="accent">written.</span></h1>
