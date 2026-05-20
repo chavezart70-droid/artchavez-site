@@ -46,12 +46,12 @@
   .hero { min-height: 100vh; position: relative; overflow: hidden; padding-top: 68px; display: flex; align-items: stretch; }
   .hero-bg { position: absolute; inset: 0; background-image: url("https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1920&q=80&auto=format&fit=crop"); background-size: cover; background-position: 20% 30%; }
   .hero-overlay { position: absolute; inset: 0; background: linear-gradient(108deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.60) 50%, rgba(10,22,40,0.05) 100%); }
-  .hero-inner { position: relative; z-index: 10; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 480px; align-items: start; }
-  .hero-text { padding: 120px 0 100px; order: 1; }
+  .hero-inner { position: relative; z-index: 10; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 480px; align-items: center; }
+  .hero-text { padding: 0 0 100px; order: 1; }
 
   /* CASALINK BADGE */
-  .casalink-badge { display: inline-flex; flex-direction: column; gap: 8px; border-left: 3px solid var(--gold); border-right: 3px solid var(--gold); margin-bottom: 26px; background: rgba(200,150,62,0.10); padding: 14px 24px; border-radius: 6px; align-items: center; text-align: center; width: 100%; }
-  .casalink-badge .b-brand { font-family: "Playfair Display", serif; font-style: italic; font-size: 56px; font-weight: 700; color: var(--gold); display: flex; align-items: baseline; gap: 7px; line-height: 1; min-height: 56px; text-shadow: 0 0 20px rgba(200,150,62,0.3); white-space: nowrap; }
+  .casalink-badge { display: inline-flex; flex-direction: column; gap: 8px; border-left: 3px solid var(--gold); border-right: 3px solid var(--gold); margin-bottom: 26px; background: rgba(200,150,62,0.10); padding: 14px 34px; border-radius: 6px; align-items: center; text-align: center; width: 100%; }
+  .casalink-badge .b-brand { font-family: "Playfair Display", serif; font-style: italic; font-size: 56px; font-weight: 700; color: var(--gold); display: flex; align-items: baseline; gap: 7px; line-height: 1; text-shadow: 0 0 20px rgba(200,150,62,0.3); white-space: nowrap; }
   .casalink-badge .b-brand .brand-article { font-size: 0.5em; position: relative; top: -0.18em; }
   .casalink-badge .b-desc { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.90); letter-spacing: 0.10em; text-transform: uppercase; }
   .casalink-badge .b-desc .gold { color: var(--gold); }
