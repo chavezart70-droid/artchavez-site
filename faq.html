@@ -129,7 +129,7 @@
   @media (max-width: 960px) {
     html, body { overflow-x: hidden; }
     .nav-top { display: none; }
-    .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; }
+    .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; width: 100%; box-sizing: border-box; }
     .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 20px; color: #e0ad55; text-shadow: 0 0 8px rgba(224,173,85,0.4); display: block; line-height: 1; text-align: center; text-decoration: none; }
     .nav-mobile-brand .sub { font-size: 10px; white-space: normal; text-shadow: none; color: #ffffff; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; letter-spacing: 0.06em; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; }
     .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
@@ -369,8 +369,9 @@
       <a href="https://artchavezmtgs.my1003app.com/290748/register" data-en-href="https://artchavezmtgs.my1003app.com/290748/register" data-es-href="https://artchavezmtgs.my1003app.com/290748/register?POSAppLanguage=ES&time=1749857030403" target="_blank" rel="noopener" class="nav-apply-btn" data-en="Apply Now" data-es="Solicita Hoy">Apply Now</a>
     </div>
   </div>
-  <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px;">
-    <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+  <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px; width: 100%; box-sizing: border-box;">
+    <div style="width:40px; flex-shrink:0;"></div>
+    <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:0; overflow:hidden;">
       <span class="name">Art Chavez</span>
       <span class="sub" id="nav-sub-mobile" data-en="Mortgage Broker &middot; Realtor&reg;" data-es="Broker Hipotecario &middot; Agente de Bienes Ra&iacute;ces&reg;">Mortgage Broker &middot; Realtor&reg;</span>
     </div>
