@@ -114,14 +114,19 @@
     @media (max-width: 960px) {
       html, body { overflow-x: hidden; }
       .nav-top { display: none; }
-      .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; }
-      .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 26px; color: #e0ad55; display: block; line-height: 1; text-align: center; }
+      .nav-mobile-row1 { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 8px; }
+      .nav-mobile-spacer { width: 40px; flex-shrink: 0; }
+      .nav-mobile-brand { flex: 1; display: flex; flex-direction: column; align-items: center; }
+      .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 20px; color: #e0ad55; display: block; line-height: 1; text-align: center; }
       .nav-mobile-brand .sub { font-size: 10px; white-space: normal; color: #ffffff; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; line-height: 1.4; padding: 0 12px; }
-      .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
-      .nav-mobile-phone-strip a { font-size: 12px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-      .mobile-lang-text { display: flex; align-items: center; gap: 4px; }
+      .nav-mobile-phone-strip { display: flex; align-items: center; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
+      .nav-mobile-phone-strip > * { flex: 1; }
+      .nav-mobile-phone-strip .strip-phone { font-size: 12px; font-weight: 700; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; justify-content: flex-start; }
+      .strip-lang { display: flex; align-items: center; justify-content: center; gap: 4px; }
       .mobile-lang-btn { background: transparent; border: none; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); cursor: pointer; padding: 2px 4px; letter-spacing: 0.08em; }
       .mobile-lang-btn.active { color: var(--gold); }
+      .strip-apply { display: flex; justify-content: flex-end; }
+      .strip-apply a { background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 7px 14px; border-radius: 4px; white-space: nowrap; }
       .about-hero { grid-template-columns: 1fr; padding: 100px 20px 40px; gap: 24px; }
       .about-hero h1 { font-size: clamp(26px, 7vw, 38px); }
       .about-photo-col { order: -1; }
@@ -142,7 +147,7 @@
 
     /* HAMBURGER */
     .hamburger-btn { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
-    .hamburger-btn span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger-btn span { display: block; width: 24px; height: 2px; background: #c8963e; border-radius: 2px; transition: all 0.3s; }
     @media (max-width: 960px) { .hamburger-btn { display: flex; } }
     .mobile-drawer {
       display: none; flex-direction: column;
@@ -167,7 +172,7 @@
     <a href="/index.html" style="text-decoration:none;">
       <div class="nav-brand">
         <span class="name">Art Chavez</span>
-        <span class="sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+        <span class="sub" id="nav-sub-desktop">Mortgage Broker · Realtor®</span>
       </div>
     </a>
     <div class="nav-links">
@@ -192,23 +197,30 @@
 
   <!-- NAV MOBILE ROW 1 -->
   <div class="nav-mobile-row1">
+    <div class="nav-mobile-spacer"></div>
     <div class="nav-mobile-brand">
       <span class="name">Art Chavez</span>
-      <span class="sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+      <span class="sub" id="nav-sub-mobile">Mortgage Broker · Realtor®</span>
     </div>
+    <button class="hamburger-btn" onclick="toggleDrawer()" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
   </div>
   <div class="nav-mobile-phone-strip">
-    <a href="tel:9718375296">
+    <a href="tel:9718375296" class="strip-phone">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.3 11.87a19.79 19.79 0 01-3.07-8.67A2 2 0 012.2 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.27a16 16 0 006.29 6.29l1.63-1.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.1v1.82z"/></svg>
-      <span data-en="Call or Text · 971-837-5296" data-es="Llame o Escriba · 971-837-5296">Call or Text · 971-837-5296</span>
+      971-837-5296
     </a>
-    <div class="mobile-lang-text">
+    <div class="strip-lang">
       <button class="mobile-lang-btn active" id="mobileLangEN" onclick="setLanguage('en')">EN</button>
       <span style="color:rgba(255,255,255,0.25);font-size:10px;">|</span>
       <button class="mobile-lang-btn" id="mobileLangES" onclick="setLanguage('es')">ES</button>
-      <button class="hamburger-btn" onclick="toggleDrawer()" id="hamburger" style="margin-left:8px;">
-        <span></span><span></span><span></span>
-      </button>
+    </div>
+    <div class="strip-apply">
+      <a href="https://artchavezmtgs.my1003app.com/290748/register"
+         data-en-href="https://artchavezmtgs.my1003app.com/290748/register"
+         data-es-href="https://artchavezmtgs.my1003app.com/290748/register?POSAppLanguage=ES&amp;time=1749857030403"
+         data-en="Solicita Hoy" data-es="Solicita Hoy">Solicita Hoy</a>
     </div>
   </div>
 </nav>
@@ -221,7 +233,10 @@
   <a href="/about.html" data-en="About" data-es="Acerca de">About</a>
   <a href="/faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
   <a href="/contact.html" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="/contact.html" class="drawer-apply" data-en="Get Pre-Approved" data-es="Obtener Preaprobación">Get Pre-Approved</a>
+  <a href="https://artchavezmtgs.my1003app.com/290748/register" class="drawer-apply"
+     data-en-href="https://artchavezmtgs.my1003app.com/290748/register"
+     data-es-href="https://artchavezmtgs.my1003app.com/290748/register?POSAppLanguage=ES&amp;time=1749857030403"
+     data-en="Solicita Hoy" data-es="Solicita Hoy">Solicita Hoy</a>
 </div>
 
 <!-- HERO -->
@@ -230,35 +245,35 @@
     <span class="about-eyebrow" data-en="About Art Chavez" data-es="Sobre Art Chavez">About Art Chavez</span>
     <h1 data-en="Built on Two Worlds. <span class='accent'>Driven</span> by One Purpose." data-es="Forjado en Dos Mundos. <span class='accent'>Impulsado</span> por un Solo Propósito.">Built on Two Worlds. <span class="accent">Driven</span> by One Purpose.</h1>
 
-    <p data-en="As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world - and that experience didn't just shape who I am. It shaped how I serve people."
+    <p data-en="As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world, and that experience didn't just shape who I am. It shaped how I serve people."
        data-es="A los cinco años llegué a los Estados Unidos desde Guadalajara, México, y crecí en Pasco, Washington. Aprendí rápidamente a navegar entre dos idiomas, dos culturas y dos formas de ver el mundo. Esa experiencia no solo moldeó quién soy, sino que también definió la manera en que sirvo a las personas.">
-      As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world - and that experience didn't just shape who I am. It shaped how I serve people.
+      As a five year old boy, I came to the U.S. from Guadalajara, Mexico and grew up in Pasco, Washington. I quickly learned to navigate two languages, two cultures, and two ways of seeing the world, and that experience didn't just shape who I am. It shaped how I serve people.
     </p>
 
-    <p data-en="I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services - US Bank in 1999, then KeyBank - before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families - particularly Spanish-speaking clients - who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work."
-       data-es="Empecé a trabajar en el sector de servicios a los 15 años. Ahí aprendí desde muy joven que atender bien a la gente es una habilidad que se trabaja, no un simple rasgo de personalidad. Esa base me llevó al mundo de los servicios financieros: entré a US Bank en 1999, luego a KeyBank, antes de dar el paso al sector hipotecario en 2004. Durante más de veinte años, he ayudado a cientos de familias a comprar casas, refinanciar y construir su patrimonio. Muchas de ellas han sido familias bilingües — especialmente clientes que hablan español — que nunca habían trabajado con alguien que entendiera tanto su situación financiera como su cultura. Cerrar esa brecha es exactamente la razón por la que hago este trabajo.">
-      I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services - US Bank in 1999, then KeyBank - before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families - particularly Spanish-speaking clients - who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work.
+    <p data-en="I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services at US Bank in 1999, then KeyBank, before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families, particularly Spanish-speaking clients, who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work."
+       data-es="Empecé a trabajar en el sector de servicios a los 15 años. Ahí aprendí desde muy joven que atender bien a la gente es una habilidad que se trabaja, no un simple rasgo de personalidad. Esa base me llevó al mundo de los servicios financieros: entré a US Bank en 1999, luego a KeyBank, antes de dar el paso al sector hipotecario en 2004. Durante más de veinte años, he ayudado a cientos de familias a comprar casas, refinanciar y construir su patrimonio. Muchas de ellas han sido familias bilingües, especialmente clientes que hablan español, que nunca habían trabajado con alguien que entendiera tanto su situación financiera como su cultura. Cerrar esa brecha es exactamente la razón por la que hago este trabajo.">
+      I began working in the hospitality industry at age 15, learning early that serving people well is a skill, not a personality trait. That foundation carried me into financial services at US Bank in 1999, then KeyBank, before I got into mortgage lending in 2004. Over twenty years, I've helped hundreds of families buy homes, refinance, and build equity, many of them bilingual families, particularly Spanish-speaking clients, who had never worked with someone who understood both their financial circumstances and their cultural background. That gap is exactly why I do this work.
     </p>
 
-    <p data-en="Adding my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage - one relationship, one conversation, one advisor from start to close."
+    <p data-en="Adding my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage: one relationship, one conversation, one advisor from start to close."
        data-es="Ampliar mi trayectoria con la licencia de Bienes Raíces en 2026 fue una decisión respaldada por esos veinte años guiando a compradores en el compromiso financiero más importante de sus vidas. Mientras más conocía el proceso, más claro veía lo que un solo asesor integral podía ofrecer. Eso es la Ventaja Casalink: una sola relación, una sola conversación y un asesor de principio a fin.">
-      Adding my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage - one relationship, one conversation, one advisor from start to close.
+      Adding my real estate license in 2026 was a decision rooted in twenty years of guiding buyers through one of the most significant financial commitments of their lives. The more I understood that process, the more clearly I saw what a single, fully integrated advisor could offer. That's the Casalink Advantage: one relationship, one conversation, one advisor from start to close.
     </p>
 
-    <p data-en="As an independent mortgage broker with access to more than 220 wholesale mortgage lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits - and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply - that transparent guidance, even when difficult, is the highest form of service."
+    <p data-en="As an independent mortgage broker with access to more than 220 wholesale mortgage lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits, and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply: that transparent guidance, even when difficult, is the highest form of service."
        data-es="Como corredor hipotecario independiente, con acceso a más de 220 bancos mayoristas, mi compromiso absoluto es con el éxito de su meta, no con una institución. Busco en el mercado el financiamiento que realmente se adapte a su situación, y traigo esa misma objetividad a cada decisión de bienes raíces. Dos décadas en este negocio me han enseñado algo en lo que creo profundamente: dar una guía transparente, incluso cuando es difícil, es la forma más elevada de servicio.">
-      As an independent mortgage broker with access to more than 220 wholesale mortgage lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits - and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply - that transparent guidance, even when difficult, is the highest form of service.
+      As an independent mortgage broker with access to more than 220 wholesale mortgage lenders, my loyalty is to the outcome, not the institution. I search the market to find financing that genuinely fits, and I bring that same objectivity to every real estate decision. Two decades in this business have reinforced something I believe deeply: that transparent guidance, even when difficult, is the highest form of service.
     </p>
 
-    <p data-en="When away from the office, I enjoy helping coach my sons' youth sports and I occasionally serve as a licensed substitute teacher, K–12, for the Hillsboro School District. I'm married to my wonderful wife of 10 years, Shannon, and we have two amazing sons, Braylon and Evan. We also share our home with Ginger, our Jack Russell-Chihuahua mix who runs the house and takes her cuddling responsibilities very seriously."
-       data-es="Fuera de la oficina, me encanta apoyar como entrenador en los equipos de mis hijos y, de vez en cuando, trabajo como maestro sustituto con licencia (K–12) para el Distrito Escolar de Hillsboro. Llevo 10 años felizmente casado con mi maravillosa esposa, Shannon, y tenemos dos hijos increíbles, Braylon y Evan. También compartimos nuestro hogar con Ginger, nuestra mezcla de Jack Russell y Chihuahua que es la verdadera dueña del hogar y se toma muy en serio sus responsabilidades de acurrucarse con nosotros.">
-      When away from the office, I enjoy helping coach my sons' youth sports and I occasionally serve as a licensed substitute teacher, K–12, for the Hillsboro School District. I'm married to my wonderful wife of 10 years, Shannon, and we have two amazing sons, Braylon and Evan. We also share our home with Ginger, our Jack Russell-Chihuahua mix who runs the house and takes her cuddling responsibilities very seriously.
+    <p data-en="When away from the office, I enjoy helping coach my sons' youth sports and I occasionally serve as a licensed substitute teacher, K-12, for the Hillsboro School District. I'm married to my wonderful wife of 10 years, Shannon, and we have two amazing sons, Braylon and Evan. We also share our home with Ginger, our Jack Russell-Chihuahua mix who runs the house and takes her cuddling responsibilities very seriously."
+       data-es="Fuera de la oficina, me encanta apoyar como entrenador en los equipos de mis hijos y, de vez en cuando, trabajo como maestro sustituto con licencia (K-12) para el Distrito Escolar de Hillsboro. Llevo 10 años felizmente casado con mi maravillosa esposa, Shannon, y tenemos dos hijos increíbles, Braylon y Evan. También compartimos nuestro hogar con Ginger, nuestra mezcla de Jack Russell y Chihuahua que es la verdadera dueña del hogar y se toma muy en serio sus responsabilidades de acurrucarse con nosotros.">
+      When away from the office, I enjoy helping coach my sons' youth sports and I occasionally serve as a licensed substitute teacher, K-12, for the Hillsboro School District. I'm married to my wonderful wife of 10 years, Shannon, and we have two amazing sons, Braylon and Evan. We also share our home with Ginger, our Jack Russell-Chihuahua mix who runs the house and takes her cuddling responsibilities very seriously.
     </p>
 
   </div>
   <div class="about-photo-col">
     <div class="about-photo-wrap">
-      <img src="untitled-1233-removebg.png" alt="Art Chavez – Mortgage Broker and Realtor® in Beaverton, Oregon" />
+      <img src="untitled-1233-removebg.png" alt="Art Chavez - Mortgage Broker and Realtor® in Beaverton, Oregon" />
     </div>
   </div>
 </div>
@@ -276,9 +291,9 @@
     <div class="how-grid">
       <div class="how-card">
         <h3 data-en="Transparent over easy" data-es="Transparencia antes que facilidad">Transparent over easy</h3>
-        <p data-en="Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position."
+        <p data-en="Every recommendation I make is weighed against one standard, what genuinely serves the client's long-term financial position."
            data-es="Cada recomendación que hago se evalúa bajo un solo estándar: lo que realmente beneficia la estabilidad financiera de mi cliente a largo plazo.">
-          Every recommendation I make is weighed against one standard — what genuinely serves the client's long-term financial position.
+          Every recommendation I make is weighed against one standard, what genuinely serves the client's long-term financial position.
         </p>
       </div>
       <div class="how-card">
@@ -290,16 +305,16 @@
       </div>
       <div class="how-card">
         <h3 data-en="One advisor, fully guided" data-es="Un solo asesor, una guía completa">One advisor, fully guided</h3>
-        <p data-en="Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors."
+        <p data-en="Executing on both mortgage and real estate under one umbrella means every detail is accounted for, with no gaps, no miscommunication, no dropped handoffs between advisors."
            data-es="Manejar tanto la hipoteca como el proceso de bienes raíces en un solo lugar garantiza que cada detalle esté cubierto: sin descuidos, sin malentendidos y sin las complicaciones de pasar de un asesor a otro.">
-          Executing on both mortgage and real estate under one umbrella means every detail is accounted for — no gaps, no miscommunication, no dropped handoffs between advisors.
+          Executing on both mortgage and real estate under one umbrella means every detail is accounted for, with no gaps, no miscommunication, no dropped handoffs between advisors.
         </p>
       </div>
       <div class="how-card">
         <h3 data-en="Bilingual from day one" data-es="Bilingüe desde el primer día">Bilingual from day one</h3>
-        <p data-en="Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard."
+        <p data-en="Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access, not a translated summary of what English-speaking clients heard."
            data-es="Nuestros clientes que hablan español reciben la misma profundidad de asesoría, explicaciones y acceso, no un simple resumen traducido de lo que se les explica a los clientes en inglés.">
-          Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access — not a translated summary of what English-speaking clients heard.
+          Spanish-speaking clients get the same depth of guidance, the same explanations, and the same access, not a translated summary of what English-speaking clients heard.
         </p>
       </div>
     </div>
@@ -340,7 +355,7 @@
     <div class="cred-card">
       <div class="cred-label" data-en="In Financial Services Since" data-es="En Servicios Financieros Desde">In Financial Services Since</div>
       <div class="cred-value">1999</div>
-      <div class="cred-sub" data-en="Retail banking 1999–2004 · Mortgage lending 2004–present" data-es="Banca minorista 1999–2004 · Préstamos hipotecarios 2004–presente">Retail banking 1999–2004 · Mortgage lending 2004–present</div>
+      <div class="cred-sub" data-en="Retail banking 1999-2004 · Mortgage lending 2004-present" data-es="Banca minorista 1999-2004 · Préstamos hipotecarios 2004-presente">Retail banking 1999-2004 · Mortgage lending 2004-present</div>
     </div>
     <div class="cred-card">
       <div class="cred-label" data-en="Languages" data-es="Idiomas">Languages</div>
@@ -349,7 +364,7 @@
     </div>
     <div class="cred-card">
       <div class="cred-label" data-en="Education" data-es="Educación">Education</div>
-      <div class="cred-value" data-en="B.A. – Washington State University" data-es="Licenciatura – Washington State University">B.A. – Washington State University</div>
+      <div class="cred-value" data-en="B.A. - Washington State University" data-es="Licenciatura - Washington State University">B.A. - Washington State University</div>
       <div class="cred-sub" data-en="English &amp; Business · Also attended Gonzaga University" data-es="Inglés y Negocios · También asistió a Gonzaga University">English &amp; Business · Also attended Gonzaga University</div>
     </div>
   </div>
@@ -398,7 +413,7 @@
     <div class="compliance-top">
       <div class="compliance-brand">
         <span class="compliance-name">Art Chavez</span>
-        <span class="compliance-sub" data-en="Mortgage Broker · Realtor®" data-es="Bróker Hipotecario · Agente de Bienes Raíces">Mortgage Broker · Realtor®</span>
+        <span class="compliance-sub" id="footer-sub">Mortgage Broker · Realtor®</span>
       </div>
       <div class="compliance-logos">
         <img src="compliance-logos.png" alt="Realtor® and Equal Housing Opportunity" style="height: 168px; width: auto; display: block;" />
@@ -433,20 +448,38 @@
 </footer>
 
 <script>
+  function setSubTitles(lang) {
+    var deskSub = lang === 'es' ? 'Bróker Hipotecario · Agente de Bienes Raíces' : 'Mortgage Broker · Realtor®';
+    var d = document.getElementById('nav-sub-desktop');
+    var m = document.getElementById('nav-sub-mobile');
+    var f = document.getElementById('footer-sub');
+    if (d) d.textContent = deskSub;
+    if (m) m.textContent = deskSub;
+    if (f) f.textContent = deskSub;
+  }
+
+  function swapApplyLinks(lang) {
+    document.querySelectorAll('[data-en-href]').forEach(function(el) {
+      el.setAttribute('href', lang === 'es' ? el.dataset.esHref : el.dataset.enHref);
+    });
+  }
+
   function setLanguage(lang) {
-    document.querySelectorAll('[data-en]').forEach(el => {
+    document.querySelectorAll('[data-en]').forEach(function(el) {
       if (el.tagName === 'H1') {
         el.innerHTML = lang === 'es' ? el.dataset.es : el.dataset.en;
       } else {
         el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
       }
     });
-    ['langBtnEN','mobileLangEN'].forEach(id => {
-      const btn = document.getElementById(id);
+    setSubTitles(lang);
+    swapApplyLinks(lang);
+    ['langBtnEN','mobileLangEN'].forEach(function(id) {
+      var btn = document.getElementById(id);
       if (btn) btn.classList.toggle('active', lang === 'en');
     });
-    ['langBtnES','mobileLangES'].forEach(id => {
-      const btn = document.getElementById(id);
+    ['langBtnES','mobileLangES'].forEach(function(id) {
+      var btn = document.getElementById(id);
       if (btn) btn.classList.toggle('active', lang === 'es');
     });
     document.documentElement.lang = lang === 'es' ? 'es' : 'en';
@@ -461,8 +494,13 @@
     drawer.classList.toggle('open');
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('lang') || 'en';
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.lang-btn, .mobile-lang-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setLanguage(btn.id.indexOf('ES') !== -1 ? 'es' : 'en');
+      });
+    });
+    var saved = localStorage.getItem('lang') || 'en';
     setLanguage(saved);
   });
 </script>
