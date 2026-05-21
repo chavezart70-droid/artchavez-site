@@ -134,8 +134,7 @@
   @media (max-width: 960px) {
     html, body { overflow-x: hidden; }
     .nav-top { display: none; }
-    .nav-mobile-row1 { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 8px; }
-    .nav-mobile-brand { flex: 1; text-align: center; max-width: calc(100% - 60px); }
+    .nav-mobile-row1 { display: flex; align-items: center; justify-content: center; padding: 10px 16px 8px; width: 100%; box-sizing: border-box; }
     .nav-mobile-brand .name { font-family: "Playfair Display", serif; font-size: 20px; color: #e0ad55; text-shadow: 0 0 8px rgba(224,173,85,0.4); display: block; line-height: 1; text-align: center; text-decoration: none; }
     .nav-mobile-brand .sub { font-size: 10px; white-space: normal; text-shadow: none; color: #ffffff; text-transform: uppercase; display: block; margin-top: 3px; text-align: center; letter-spacing: 0.06em; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; }
     .nav-mobile-phone-strip { display: flex; align-items: center; justify-content: space-between; width: 100%; background: rgba(200,150,62,0.12); border-top: 1px solid rgba(200,150,62,0.20); border-bottom: 1px solid rgba(200,150,62,0.20); padding: 9px 16px; }
@@ -325,25 +324,27 @@
       <a href="https://artchavezmtgs.my1003app.com/290748/register" target="_blank" rel="noopener" class="nav-apply-btn" data-en="Apply Now" data-es="Solicita Hoy" data-en-href="https://artchavezmtgs.my1003app.com/290748/register" data-es-href="https://artchavezmtgs.my1003app.com/290748/register?POSAppLanguage=ES&time=1749857030403">Apply Now</a>
     </div>
   </div>
-  <div class="nav-mobile-row1">
-    <a href="/index.html" class="nav-mobile-brand" style="text-decoration:none;">
+  <div class="nav-mobile-row1" style="justify-content: space-between; padding: 0 16px; width: 100%; box-sizing: border-box;">
+    <div style="width:40px; flex-shrink:0;"></div>
+    <div class="nav-mobile-brand" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:0; overflow:hidden;">
       <span class="name">Art Chavez</span>
       <span class="sub" id="nav-sub-mobile">Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;</span>
-    </a>
+    </div>
     <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile-phone-strip">
-    <a href="tel:9718375296">
+    <a href="tel:9718375296" style="flex:1;">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c8963e" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.3 11.87a19.79 19.79 0 01-3.07-8.67A2 2 0 012.2 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.27a16 16 0 006.29 6.29l1.63-1.63a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.1v1.82z"/></svg>
       971-837-5296
     </a>
-    <div class="mobile-lang-text">
+    <div class="mobile-lang-text" style="flex:1;justify-content:center;display:flex;align-items:center;gap:4px;">
       <button class="mobile-lang-btn active">EN</button>
       <span style="color:rgba(200,150,62,0.4);font-size:10px;">|</span>
       <button class="mobile-lang-btn">ES</button>
     </div>
+    <a href="https://artchavezmtgs.my1003app.com/290748/register" data-en-href="https://artchavezmtgs.my1003app.com/290748/register" data-es-href="https://artchavezmtgs.my1003app.com/290748/register?POSAppLanguage=ES&time=1749857030403" target="_blank" style="background:var(--gold);color:var(--navy);padding:5px 12px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;flex-shrink:0;flex:1;text-align:right;" data-en="Apply Now" data-es="Solicita Hoy">Apply Now</a>
   </div>
   <div class="mobile-drawer" id="mobileDrawer">
     <a href="https://www.artchavez.com/index.html" data-en="Home" data-es="Inicio">Home</a>
