@@ -464,13 +464,15 @@
 
 <script>
   function setSubTitles(lang) {
-    var deskSub = lang === 'es' ? 'Bróker Hipotecario · Agente de Bienes Raíces' : 'Mortgage Broker · Realtor®';
     var d = document.getElementById('nav-sub-desktop');
     var m = document.getElementById('nav-sub-mobile');
     var f = document.getElementById('footer-sub');
-    if (d) d.textContent = deskSub;
-    if (m) m.textContent = deskSub;
-    if (f) f.textContent = deskSub;
+    var html = lang === 'es'
+      ? 'Bróker de Hipotecas <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Agente de Bienes Raíces'
+      : 'Mortgage Broker <span style="font-size:16px; line-height:1; vertical-align:middle;">·</span> Realtor&reg;';
+    if (d) d.innerHTML = html;
+    if (m) m.innerHTML = html;
+    if (f) f.innerHTML = html;
   }
 
   function swapApplyLinks(lang) {
