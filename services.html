@@ -34,7 +34,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%;overflow-x:hidden}
 
 body{
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -112,7 +112,7 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
 .brand{display:flex;flex-direction:column;line-height:1.05}
-.brand .name{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.32rem;color:var(--navy);letter-spacing:-.01em}
+.brand .name{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.32rem;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
 .brand .role{font-size:.74rem;letter-spacing:.04em;color:var(--muted);font-weight:500;margin-top:3px}
 
 .nav-desktop{display:flex;align-items:center;gap:22px}
@@ -156,7 +156,6 @@ img{max-width:100%;display:block}
 @media(max-width:1024px){
   .nav-desktop{display:none}
   .header-actions .mortgage-link{display:none}
-  .header-actions .lang-toggle{display:none}
   .menu-btn{
     display:inline-flex;align-items:center;justify-content:center;
     width:46px;height:46px;border-radius:10px;border:1px solid var(--soft-gray);background:#fff;color:var(--navy);
@@ -245,9 +244,9 @@ section{padding:88px 0}
   filter:blur(2px);z-index:0;
 }
 .portrait-wrap img{
-  position:relative;z-index:1;width:100%;border-radius:18px;
-  -webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);
+  position:relative;z-index:1;width:100%;height:auto;border-radius:18px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);
 }
 .portrait-badge{
   position:absolute;z-index:2;left:-14px;bottom:46px;
@@ -265,7 +264,7 @@ section{padding:88px 0}
 .page-hero p{color:#cfd7e6;font-size:1.15rem;max-width:56ch}
 .page-hero.with-portrait .ph-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
 .page-hero.with-portrait .pwrap{max-width:360px;margin-left:auto}
-.page-hero.with-portrait .pwrap img{width:100%;border-radius:18px;-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent);mask-image:linear-gradient(to bottom,#000 82%,transparent)}
+.page-hero.with-portrait .pwrap img{width:100%;height:auto;border-radius:18px;-webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent);mask-image:linear-gradient(to bottom,#000 92%,transparent)}
 
 /* ===========================================================
    CARDS / GRIDS
@@ -298,7 +297,7 @@ section{padding:88px 0}
 /* Two-column split (solution / dual-licensed) */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .split.reverse .split-media{order:-1}
-.split-media img{border-radius:18px;box-shadow:var(--shadow-md)}
+.split-media img{width:100%;height:auto;border-radius:18px;-webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,#000 92%,transparent 100%)}
 
 /* ===========================================================
    PROCESS / BUYER PATH (real sequence -> numbered is honest)
@@ -455,6 +454,13 @@ body.lang-es .review-card.rev-en{display:none}
   .btn-row .btn{width:100%}
   .hero-copy h1{font-size:2rem}
 }
+@media(max-width:600px){
+  .brand .role{display:none}
+  .lang-toggle button{padding:7px 9px;font-size:.72rem}
+  .header-cta span{display:none}
+  .header-cta{padding:0;width:46px;height:46px;justify-content:center;gap:0}
+  .header-cta svg{width:20px;height:20px}
+}
 @media(max-width:480px){
   body{font-size:16px}
   .container{padding:0 18px}
@@ -481,7 +487,7 @@ body.lang-es .review-card.rev-en{display:none}
 .trust-strip .ti{display:inline-flex;align-items:center;gap:9px;font-family:"Manrope",sans-serif;font-weight:600;font-size:.9rem;color:var(--charcoal)}
 .trust-strip .ti .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
 .trust-strip .ti b{color:var(--navy);font-weight:800}
-@media(max-width:780px){.trust-strip .inner{gap:10px 18px}.trust-strip .ti{font-size:.84rem}}
+@media(max-width:780px){.trust-strip .inner{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px}.trust-strip .ti{font-size:.86rem}}
 
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
@@ -492,7 +498,7 @@ body.lang-es .review-card.rev-en{display:none}
   <div class="header-inner">
     <a class="brand" href="index.html" aria-label="Art Chavez home">
       <span class="name">Art Chavez</span>
-      <span class="role" data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Asesor Hipotecario y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</span>
+      <span class="role" data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Broker de Hipotecas y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</span>
     </a>
     <nav class="nav-desktop" aria-label="Primary">
       <a href="start-here.html" class="nav-link" data-en="Start Here" data-es="Empiece Aqu&iacute;">Start Here</a>
@@ -550,7 +556,7 @@ body.lang-es .review-card.rev-en{display:none}
     <h1 data-en="Ways I Can Help" data-es="C&oacute;mo le puedo ayudar">Ways I Can Help</h1>
     <p data-en="Buying, financing, selling, or investing, the goal is the same: one coordinated plan. Guidance in English and Spanish." data-es="Comprar, financiar, vender o invertir: la meta es la misma, un solo plan coordinado. Orientaci&oacute;n en ingl&eacute;s y espa&ntilde;ol.">Buying, financing, selling, or investing, the goal is the same: one coordinated plan. Guidance in English and Spanish.</p>
   </div>
-</section><section class="trust-strip"><div class="inner"><span class="ti"><span class="dot"></span><span data-en="<b>20+</b> Years Experience" data-es="<b>20+</b> a&ntilde;os de experiencia"><b>20+</b> Years Experience</span></span><span class="ti"><span class="dot"></span><span data-en="Hundreds of Oregon Families Helped Since <b>2004</b>" data-es="Cientos de familias de Oregon atendidas desde <b>2004</b>">Hundreds of Oregon Families Helped Since <b>2004</b></span></span><span class="ti"><span class="dot"></span><span data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Asesor Hipotecario y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</span></span><span class="ti"><span class="dot"></span><span data-en="English &amp; Spanish" data-es="Ingl&eacute;s y Espa&ntilde;ol">English &amp; Spanish</span></span><span class="ti"><span class="dot"></span><span data-en="Access to <b>220+</b> Lenders" data-es="Acceso a m&aacute;s de <b>220</b> prestamistas">Access to <b>220+</b> Lenders</span></span></div></section>
+</section><section class="trust-strip"><div class="inner"><span class="ti"><span class="dot"></span><span data-en="<b>20+</b> Years Experience" data-es="<b>20+</b> a&ntilde;os de experiencia"><b>20+</b> Years Experience</span></span><span class="ti"><span class="dot"></span><span data-en="Hundreds of Oregon Families Helped Since <b>2004</b>" data-es="Cientos de familias de Oregon atendidas desde <b>2004</b>">Hundreds of Oregon Families Helped Since <b>2004</b></span></span><span class="ti"><span class="dot"></span><span data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Broker de Hipotecas y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</span></span><span class="ti"><span class="dot"></span><span data-en="English &amp; Spanish" data-es="Ingl&eacute;s y Espa&ntilde;ol">English &amp; Spanish</span></span><span class="ti"><span class="dot"></span><span data-en="Access to <b>220+</b> Lenders" data-es="Acceso a m&aacute;s de <b>220</b> prestamistas">Access to <b>220+</b> Lenders</span></span></div></section>
 <section class="band-white">
   <div class="container">
     <div class="grid grid-2 reveal">
@@ -587,7 +593,7 @@ body.lang-es .review-card.rev-en{display:none}
     <div class="footer-top">
       <div class="footer-brand">
         <div class="name">Art Chavez</div>
-        <div class="role" data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Asesor Hipotecario y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</div>
+        <div class="role" data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Broker de Hipotecas y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</div>
         <p data-en="Helping Oregon buyers navigate the entire home buying journey through one coordinated plan."
            data-es="Ayudando a los compradores de Oregon a navegar todo el proceso de compra de vivienda con un solo plan coordinado.">Helping Oregon buyers navigate the entire home buying journey through one coordinated plan.</p>
         <p style="margin-top:14px">
