@@ -244,9 +244,9 @@ section{padding:88px 0}
   filter:blur(2px);z-index:0;
 }
 .portrait-wrap img{
-  position:relative;z-index:1;width:100%;height:auto;border-radius:18px;
-  -webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);
+  position:relative;z-index:1;width:100%;height:auto;border-radius:18px 18px 0 0;
+  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
 }
 .portrait-badge{
   position:absolute;z-index:2;left:-14px;bottom:46px;
@@ -264,7 +264,7 @@ section{padding:88px 0}
 .page-hero p{color:#cfd7e6;font-size:1.15rem;max-width:56ch}
 .page-hero.with-portrait .ph-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
 .page-hero.with-portrait .pwrap{max-width:360px;margin-left:auto}
-.page-hero.with-portrait .pwrap img{width:100%;height:auto;border-radius:18px;-webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent);mask-image:linear-gradient(to bottom,#000 92%,transparent)}
+.page-hero.with-portrait .pwrap img{width:100%;height:auto;border-radius:18px 18px 0 0;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent);mask-image:linear-gradient(to bottom,#000 80%,transparent)}
 
 /* ===========================================================
    CARDS / GRIDS
@@ -297,7 +297,9 @@ section{padding:88px 0}
 /* Two-column split (solution / dual-licensed) */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .split.reverse .split-media{order:-1}
-.split-media img{width:100%;height:auto;border-radius:18px;-webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,#000 92%,transparent 100%)}
+.split-media img{width:100%;height:auto;border-radius:18px 18px 0 0}
+.band-navy .split-media img{-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,#000 82%,transparent 100%)}
+.band-white .split-media img{-webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 62%,transparent 100%)}
 
 /* ===========================================================
    PROCESS / BUYER PATH (real sequence -> numbered is honest)
@@ -432,8 +434,7 @@ body.lang-es .review-card.rev-en{display:none}
    MOBILE  (Blueprint Section 15)
    =========================================================== */
 @media(max-width:940px){
-  .hero-grid{grid-template-columns:1fr;gap:30px;padding:46px 24px 40px}
-  .hero-portrait{order:2}                 /* headline, sub, CTA, then portrait */
+  .hero-grid{display:flex;flex-direction:column-reverse;gap:22px;padding:10px 24px 40px;align-items:stretch}  /* photo first on mobile */
   .portrait-wrap{max-width:330px;margin:0 auto}
   .portrait-badge{left:0}
   .page-hero.with-portrait .ph-grid{grid-template-columns:1fr;gap:26px}
@@ -455,11 +456,21 @@ body.lang-es .review-card.rev-en{display:none}
   .hero-copy h1{font-size:2rem}
 }
 @media(max-width:600px){
-  .brand .role{display:none}
-  .lang-toggle button{padding:7px 9px;font-size:.72rem}
+  /* (1) compact header that still fits the menu button */
+  .header-inner{padding:11px 14px;gap:8px}
+  .header-actions{gap:6px}
+  .brand{max-width:150px}
+  .brand .name{font-size:1.08rem}
+  /* (2) keep title under the name on mobile, compact */
+  .brand .role{font-size:.58rem;letter-spacing:.01em;margin-top:2px;line-height:1.22}
+  .lang-toggle button{padding:6px 8px;font-size:.68rem}
   .header-cta span{display:none}
-  .header-cta{padding:0;width:46px;height:46px;justify-content:center;gap:0}
-  .header-cta svg{width:20px;height:20px}
+  .header-cta{padding:0;width:38px;height:38px;justify-content:center;gap:0}
+  .header-cta svg{width:18px;height:18px}
+  .menu-btn{width:38px;height:38px}
+  .menu-btn svg{width:19px;height:19px}
+  /* (4) hero tags flush-left, stacked */
+  .trust-row{flex-direction:column;align-items:flex-start;gap:9px}
 }
 @media(max-width:480px){
   body{font-size:16px}
@@ -555,7 +566,7 @@ body.lang-es .review-card.rev-en{display:none}
     <div class="hero-copy">
       <span class="eyebrow" data-en="Mortgage Broker &amp; Real Estate Agent" data-es="Broker de Hipotecas y Agente de Bienes Ra&iacute;ces">Mortgage Broker &amp; Real Estate Agent</span>
       <h1 data-en="<span class='em'>One Advisor</span> for the Entire Home Buying Journey" data-es="<span class='em'>Un solo asesor</span> para todo el proceso de compra de vivienda"><span class="em">One Advisor</span> for the Entire Home Buying Journey</h1>
-      <p class="hero-sub" data-en="Mortgage Broker and Real Estate Agent helping Oregon buyers connect financing, home search, offer strategy, negotiation, and closing through one coordinated plan." data-es="Asesor hipotecario y agente de bienes ra&iacute;ces que ayuda a los compradores de Oregon a conectar el financiamiento, la b&uacute;squeda de casa, la estrategia de oferta, la negociaci&oacute;n y el cierre en un solo plan coordinado.">Mortgage Broker and Real Estate Agent helping Oregon buyers connect financing, home search, offer strategy, negotiation, and closing through one coordinated plan.</p>
+      <p class="hero-sub" data-en="Mortgage Broker and Real Estate Agent helping Oregon buyers connect financing, home search, offer strategy, negotiation, and closing through one coordinated plan." data-es="Broker de Hipotecas y agente de bienes ra&iacute;ces que ayuda a los compradores de Oregon a conectar el financiamiento, la b&uacute;squeda de casa, la estrategia de oferta, la negociaci&oacute;n y el cierre en un solo plan coordinado.">Mortgage Broker and Real Estate Agent helping Oregon buyers connect financing, home search, offer strategy, negotiation, and closing through one coordinated plan.</p>
       <p class="hero-support" data-en="Bilingual guidance in English and Spanish. Serving Oregon buyers since 2004." data-es="Orientaci&oacute;n biling&uuml;e en ingl&eacute;s y espa&ntilde;ol. Atendiendo a compradores de Oregon desde 2004.">Bilingual guidance in English and Spanish. Serving Oregon buyers since 2004.</p>
       <div class="btn-row">
         <a class="btn btn-gold" href="start-here.html" data-en="Start Here" data-es="Empiece Aqu&iacute;">Start Here</a>
@@ -586,7 +597,7 @@ body.lang-es .review-card.rev-en{display:none}
     <div class="card reveal" style="max-width:920px;margin:0 auto;padding:42px;background:var(--warm-white)">
       <div class="feat" style="margin:0 0 18px"><div class="ico" style="width:54px;height:54px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div></div>
       <span class="eyebrow" data-en="The Difference" data-es="La Diferencia">The Difference</span>
-      <h2 style="font-size:clamp(1.7rem,3vw,2.3rem);margin:12px 0 16px" data-en="Underwritten Before It&rsquo;s Written" data-es="Underwritten Before It&rsquo;s Written">Underwritten Before It&rsquo;s Written</h2>
+      <h2 style="font-size:clamp(1.7rem,3vw,2.3rem);margin:12px 0 16px" data-en="Underwritten Before It&rsquo;s Written" data-es="Aprobado Antes de Hacer la Oferta">Underwritten Before It&rsquo;s Written</h2>
       <p data-en="Most buyers obtain a pre-approval before shopping for a home. My approach goes further." data-es="La mayor&iacute;a de los compradores obtiene una precalificaci&oacute;n antes de buscar casa. Mi enfoque va m&aacute;s all&aacute;.">Most buyers obtain a pre-approval before shopping for a home. My approach goes further.</p>
       <p style="margin-top:12px" data-en="Whenever possible, I work to identify income, asset, credit, and documentation issues before an offer is submitted, reducing surprises later in the transaction and strengthening the buyer&rsquo;s position when it&rsquo;s time to move forward." data-es="Siempre que es posible, trabajo para identificar problemas de ingresos, ahorros, cr&eacute;dito y documentaci&oacute;n antes de presentar una oferta, lo que reduce sorpresas m&aacute;s adelante y fortalece la posici&oacute;n del comprador cuando llega el momento de avanzar.">Whenever possible, I work to identify income, asset, credit, and documentation issues before an offer is submitted, reducing surprises later in the transaction and strengthening the buyer&rsquo;s position when it&rsquo;s time to move forward.</p>
       <p style="margin-top:12px" data-en="The goal is simple: uncover potential financing issues early, create a clear plan, and help buyers move through the process with greater confidence." data-es="La meta es sencilla: detectar posibles problemas de financiamiento a tiempo, crear un plan claro y ayudar al comprador a avanzar con m&aacute;s confianza.">The goal is simple: uncover potential financing issues early, create a clear plan, and help buyers move through the process with greater confidence.</p>
