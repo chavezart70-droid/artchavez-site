@@ -85,7 +85,7 @@ img{max-width:100%;display:block}
   font-family:"Manrope",sans-serif;font-weight:700;font-size:1rem;
   padding:15px 26px;border-radius:11px;border:1.5px solid transparent;
   cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .18s,color .18s,border-color .18s;
-  line-height:1;white-space:nowrap;
+  line-height:1.2;white-space:normal;max-width:100%;text-align:center;
 }
 .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .btn-primary{background:var(--navy);color:var(--white);box-shadow:0 6px 18px rgba(15,23,42,.22)}
@@ -238,24 +238,20 @@ section{padding:88px 0}
 .portrait-wrap{
   position:relative;width:100%;max-width:430px;
 }
-.portrait-wrap::before{
-  content:"";position:absolute;inset:auto -6% -4% -6%;height:62%;
-  background:radial-gradient(60% 80% at 50% 100%,rgba(201,163,78,.20),transparent 70%);
-  filter:blur(2px);z-index:0;
-}
 .portrait-wrap img{
   position:relative;z-index:1;width:100%;height:auto;border-radius:18px 18px 0 0;
-  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 93%);
+  mask-image:linear-gradient(to bottom,#000 60%,transparent 93%);
 }
-.portrait-badge{
-  position:absolute;z-index:2;left:-14px;bottom:46px;
-  background:#fff;color:var(--navy);border-radius:13px;padding:13px 16px;box-shadow:var(--shadow-lg);
-  display:flex;align-items:center;gap:12px;max-width:230px;
+.trust-badge{
+  position:absolute;z-index:2;left:-14px;bottom:42px;
+  background:#fff;border-radius:14px;padding:18px 22px 16px;box-shadow:var(--shadow-lg);
+  max-width:255px;text-align:center;overflow:hidden;
 }
-.portrait-badge .big{font-family:"Manrope";font-weight:800;font-size:1.5rem;color:var(--navy);line-height:1}
-.portrait-badge .lbl{font-size:.74rem;color:var(--muted);font-weight:600;line-height:1.25}
-.portrait-badge .bar{width:3px;align-self:stretch;background:var(--gold);border-radius:3px}
+.trust-badge::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold)}
+.trust-badge .tb-head{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.6rem;color:var(--navy);line-height:1.05;letter-spacing:.01em}
+.trust-badge .tb-sub{font-size:.82rem;color:var(--navy);font-weight:700;line-height:1.3;margin-top:7px}
+.trust-badge .tb-small{font-size:.68rem;color:var(--muted);font-weight:600;line-height:1.3;margin-top:7px}
 
 /* Generic page hero (interior pages) */
 .page-hero{background:radial-gradient(110% 130% at 85% 10%,#1a2740,#0F172A 60%);color:#fff;padding:64px 0 58px}
@@ -264,7 +260,7 @@ section{padding:88px 0}
 .page-hero p{color:#cfd7e6;font-size:1.15rem;max-width:56ch}
 .page-hero.with-portrait .ph-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
 .page-hero.with-portrait .pwrap{max-width:360px;margin-left:auto}
-.page-hero.with-portrait .pwrap img{width:100%;height:auto;border-radius:18px 18px 0 0;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent);mask-image:linear-gradient(to bottom,#000 80%,transparent)}
+.page-hero.with-portrait .pwrap img{width:100%;height:auto;border-radius:18px 18px 0 0;-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 92%);mask-image:linear-gradient(to bottom,#000 60%,transparent 92%)}
 
 /* ===========================================================
    CARDS / GRIDS
@@ -298,8 +294,8 @@ section{padding:88px 0}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .split.reverse .split-media{order:-1}
 .split-media img{width:100%;height:auto;border-radius:18px 18px 0 0}
-.band-navy .split-media img{-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,#000 82%,transparent 100%)}
-.band-white .split-media img{-webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 62%,transparent 100%)}
+.band-navy .split-media img{-webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 93%);mask-image:linear-gradient(to bottom,#000 62%,transparent 93%)}
+.band-white .split-media img{-webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent 90%);mask-image:linear-gradient(to bottom,#000 50%,transparent 90%)}
 
 /* ===========================================================
    PROCESS / BUYER PATH (real sequence -> numbered is honest)
@@ -436,7 +432,8 @@ body.lang-es .review-card.rev-en{display:none}
 @media(max-width:940px){
   .hero-grid{display:flex;flex-direction:column-reverse;gap:22px;padding:10px 24px 40px;align-items:stretch}  /* photo first on mobile */
   .portrait-wrap{max-width:330px;margin:0 auto}
-  .portrait-badge{left:0}
+  .trust-badge{left:8px;bottom:24px;max-width:228px;padding:15px 18px 13px}
+  .trust-badge .tb-head{font-size:1.4rem}
   .page-hero.with-portrait .ph-grid{grid-template-columns:1fr;gap:26px}
   .page-hero.with-portrait .pwrap{margin:0 auto}
   .split{grid-template-columns:1fr;gap:28px}
