@@ -34,7 +34,9 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+ul,ol,menu{list-style:none;-webkit-padding-start:0;padding-inline-start:0;-webkit-margin-start:0;margin-inline-start:0;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{overflow-x:hidden}
 
 body{
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -134,12 +136,12 @@ img{max-width:100%;display:block}
   transition:background .15s,transform .15s;
 }
 .header-cta:hover{background:#16213c;transform:translateY(-1px)}
-.header-cta{white-space:nowrap}
-.mortgage-link{font-size:.82rem;color:var(--muted);font-weight:600;font-family:"Manrope",sans-serif;border-bottom:1px dashed transparent}
-.mortgage-link:hover{color:var(--navy);border-bottom-color:var(--gold)}
+.header-cta{white-space:nowrap;flex:none}
+.mortgage-link{font-size:.78rem;color:var(--navy);font-weight:700;font-family:"Manrope",sans-serif;border:1px solid rgba(201,163,78,.55);border-radius:999px;padding:5px 10px;white-space:nowrap}
+.mortgage-link:hover{color:var(--navy);background:rgba(201,163,78,.12);border-color:var(--gold)}
 
 /* Language toggle */
-.lang-toggle{display:inline-flex;border:1px solid var(--soft-gray);border-radius:9px;overflow:hidden;background:#fff}
+.lang-toggle{display:inline-flex;border:1px solid var(--soft-gray);border-radius:9px;overflow:hidden;background:#fff;flex:none}
 .lang-toggle button{
   font-family:"Manrope",sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.02em;
   background:transparent;border:0;color:var(--muted);padding:8px 11px;cursor:pointer;transition:all .15s;
@@ -421,6 +423,9 @@ body.lang-es .review-card.rev-en{display:none}
 .footer-col h4{color:#fff;font-family:"Manrope";font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
 .footer-col a{display:block;color:#aab4c6;padding:6px 0;font-size:.95rem}
 .footer-col a:hover{color:var(--gold)}
+.footer-col a.mtg-site{color:var(--gold);font-weight:700}
+.footer-col a.mtg-site:hover{color:#d4b261}
+.mobile-menu nav a.mtg-site{color:var(--gold)}
 .footer-lang{display:flex;gap:8px;margin-top:6px}
 .footer-lang button{background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfd7e6;font-family:"Manrope";font-weight:700;font-size:.78rem;padding:7px 12px;border-radius:8px;cursor:pointer}
 .footer-lang button.active{background:var(--gold);color:var(--navy);border-color:var(--gold)}
@@ -452,9 +457,9 @@ body.lang-es .review-card.rev-en{display:none}
   .checklist{grid-template-columns:1fr;gap:12px}
   .calc-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr;gap:30px}
-  .btn{width:100%}                                      /* thumb-friendly */
+  .btn{max-width:100%;min-width:0}                      /* thumb-friendly */
   .btn-row{flex-direction:column;align-items:stretch}
-  .btn-row .btn{width:100%}
+  .btn-row .btn{width:auto;align-self:stretch}
   .hero-copy h1{font-size:2rem}
 }
 @media(max-width:600px){
@@ -511,7 +516,7 @@ body.lang-es .review-card.rev-en{display:none}
   <div class="header-inner">
     <a class="brand" href="index.html" aria-label="Art Chavez home">
       <span class="name">Art Chavez</span>
-      <span class="role" data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces y Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</span>
+      <span class="role" data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces &amp; Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</span>
     </a>
     <nav class="nav-desktop" aria-label="Primary">
       <a href="start-here.html" class="nav-link" data-en="Start Here" data-es="Empiece Aqu&iacute;">Start Here</a>
@@ -551,7 +556,7 @@ body.lang-es .review-card.rev-en{display:none}
     <a href="about.html" data-en="About" data-es="Acerca">About</a>
     <a href="faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
     <a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a>
-    <a href="https://artchavezmortgages.com" data-en="Mortgage Site" data-es="Sitio Hipotecario">Mortgage Site</a>
+    <a class="mtg-site" href="https://artchavezmortgages.com" data-en="Mortgage Site" data-es="Sitio Hipotecario">Mortgage Site</a>
   </nav>
   <div class="mm-cta">
     <a class="btn btn-gold" href="tel:+19718375296" data-en="Call or Text 971-837-5296" data-es="Llame o Texto 971-837-5296">Call or Text 971-837-5296</a>
@@ -569,14 +574,14 @@ body.lang-es .review-card.rev-en{display:none}
     <h1 data-en="Ways I Can Help" data-es="C&oacute;mo le puedo ayudar">Ways I Can Help</h1>
     <p data-en="Buying, financing, selling, or investing, the goal is the same: one coordinated plan. Guidance in English and Spanish." data-es="Comprar, financiar, vender o invertir: la meta es la misma, un solo plan coordinado. Orientaci&oacute;n en ingl&eacute;s y espa&ntilde;ol.">Buying, financing, selling, or investing, the goal is the same: one coordinated plan. Guidance in English and Spanish.</p>
   </div>
-</section><section class="trust-strip"><div class="inner"><span class="ti"><span class="dot"></span><span data-en="<b>20+</b> Years Experience" data-es="<b>20+</b> a&ntilde;os de experiencia"><b>20+</b> Years Experience</span></span><span class="ti"><span class="dot"></span><span data-en="Hundreds of Oregon Families Helped Since <b>2004</b>" data-es="Cientos de familias de Oregon atendidas desde <b>2004</b>">Hundreds of Oregon Families Helped Since <b>2004</b></span></span><span class="ti"><span class="dot"></span><span data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces y Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</span></span><span class="ti"><span class="dot"></span><span data-en="English &amp; Spanish" data-es="Ingl&eacute;s y Espa&ntilde;ol">English &amp; Spanish</span></span><span class="ti"><span class="dot"></span><span data-en="Access to <b>220+</b> Lenders" data-es="Acceso a m&aacute;s de <b>220</b> prestamistas">Access to <b>220+</b> Lenders</span></span></div></section>
+</section><section class="trust-strip"><div class="inner"><span class="ti"><span class="dot"></span><span data-en="<b>20+</b> Years Experience" data-es="<b>20+</b> a&ntilde;os de experiencia"><b>20+</b> Years Experience</span></span><span class="ti"><span class="dot"></span><span data-en="Hundreds of Oregon Families Helped Since <b>2004</b>" data-es="Cientos de familias de Oregon atendidas desde <b>2004</b>">Hundreds of Oregon Families Helped Since <b>2004</b></span></span><span class="ti"><span class="dot"></span><span data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces &amp; Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</span></span><span class="ti"><span class="dot"></span><span data-en="English &amp; Spanish" data-es="Ingl&eacute;s y Espa&ntilde;ol">English &amp; Spanish</span></span><span class="ti"><span class="dot"></span><span data-en="Access to <b>220+</b> Lenders" data-es="Acceso a m&aacute;s de <b>220</b> prestamistas">Access to <b>220+</b> Lenders</span></span></div></section>
 <section class="band-white">
   <div class="container">
     <div class="grid grid-2 reveal">
       <div class="card"><span class="num">01</span><h3 data-en="Buy a Home" data-es="Comprar una casa">Buy a Home</h3><ul style="list-style:none;display:grid;gap:10px;margin-top:14px"><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="First-Time Home Buyers" data-es="Compradores primerizos">First-Time Home Buyers</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Move-Up Buyers" data-es="Compradores que buscan algo m&aacute;s grande">Move-Up Buyers</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Downsizing" data-es="Reducir de tama&ntilde;o">Downsizing</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Relocation" data-es="Reubicaci&oacute;n">Relocation</span></li></ul>
         <div class="btn-row" style="margin-top:18px"><a class="btn btn-secondary" href="contact.html" data-en="Talk About Buying" data-es="Hablemos de comprar">Talk About Buying</a></div></div>
       <div class="card"><span class="num">02</span><h3 data-en="Finance a Home" data-es="Financiar una casa">Finance a Home</h3><ul style="list-style:none;display:grid;gap:10px;margin-top:14px"><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Purchase Financing" data-es="Financiamiento de compra">Purchase Financing</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Refinance Financing" data-es="Refinanciamiento">Refinance Financing</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="FHA Loans" data-es="Pr&eacute;stamos FHA">FHA Loans</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="VA Loans" data-es="Pr&eacute;stamos VA">VA Loans</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Conventional Loans" data-es="Pr&eacute;stamos convencionales">Conventional Loans</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Jumbo Loans" data-es="Pr&eacute;stamos jumbo">Jumbo Loans</span></li></ul>
-        <div class="btn-row" style="margin-top:18px"><a class="btn btn-primary" href="https://artchavezmortgages.com" data-en="Visit ArtChavezMortgages.com" data-es="Visite ArtChavezMortgages.com">Visit ArtChavezMortgages.com</a></div></div>
+        <div class="btn-row" style="margin-top:18px"><a class="btn btn-primary" href="https://artchavezmortgages.com" data-en="Visit artchavezmortgages.com" data-es="Visite artchavezmortgages.com">Visit artchavezmortgages.com</a></div></div>
       <div class="card"><span class="num">03</span><h3 data-en="Sell a Home" data-es="Vender una casa">Sell a Home</h3><ul style="list-style:none;display:grid;gap:10px;margin-top:14px"><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Home Valuation" data-es="Valuaci&oacute;n de la casa">Home Valuation</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Listing Strategy" data-es="Estrategia de listado">Listing Strategy</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Marketing" data-es="Marketing">Marketing</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Negotiation" data-es="Negociaci&oacute;n">Negotiation</span></li></ul>
         <div class="btn-row" style="margin-top:18px"><a class="btn btn-secondary" href="contact.html" data-en="Talk About Selling" data-es="Hablemos de vender">Talk About Selling</a></div></div>
       <div class="card"><span class="num">04</span><h3 data-en="Invest in Real Estate" data-es="Invertir en bienes ra&iacute;ces">Invest in Real Estate</h3><ul style="list-style:none;display:grid;gap:10px;margin-top:14px"><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Investment Property Purchases" data-es="Compra de propiedades de inversi&oacute;n">Investment Property Purchases</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Investment Financing" data-es="Financiamiento de inversi&oacute;n">Investment Financing</span></li><li style="display:flex;gap:11px;align-items:flex-start;color:var(--charcoal)"><span style="color:var(--gold);flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-en="Long-Term Wealth Building" data-es="Creaci&oacute;n de patrimonio a largo plazo">Long-Term Wealth Building</span></li></ul>
@@ -606,7 +611,7 @@ body.lang-es .review-card.rev-en{display:none}
     <div class="footer-top">
       <div class="footer-brand">
         <div class="name">Art Chavez</div>
-        <div class="role" data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces y Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</div>
+        <div class="role" data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces &amp; Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</div>
         <p data-en="Helping Oregon buyers navigate the entire home buying journey through one coordinated plan."
            data-es="Ayudando a los compradores de Oregon a navegar todo el proceso de compra de vivienda con un solo plan coordinado.">Helping Oregon buyers navigate the entire home buying journey through one coordinated plan.</p>
         <p style="margin-top:14px">
@@ -621,7 +626,7 @@ body.lang-es .review-card.rev-en{display:none}
         <a href="about.html" data-en="About" data-es="Acerca">About</a>
         <a href="faq.html" data-en="FAQ" data-es="Preguntas">FAQ</a>
         <a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a>
-        <a href="https://artchavezmortgages.com" data-en="Mortgage Site" data-es="Sitio Hipotecario">Mortgage Site</a>
+        <a class="mtg-site" href="https://artchavezmortgages.com" data-en="Mortgage Site" data-es="Sitio Hipotecario">Mortgage Site</a>
       </div>
       <div class="footer-col">
         <h4 data-en="Get Started" data-es="Comenzar">Get Started</h4>
