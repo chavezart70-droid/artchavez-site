@@ -271,11 +271,11 @@ section{padding:88px 0}
    CARDS / GRIDS
    =========================================================== */
 .grid{display:grid;gap:22px}
-.grid-2{grid-template-columns:repeat(2,1fr)}
-.grid-3{grid-template-columns:repeat(3,1fr)}
-.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 
-.card{
+.card{min-width:0;
   background:var(--white);border:1px solid var(--soft-gray);border-radius:var(--radius);
   padding:28px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s;
 }
@@ -287,7 +287,7 @@ section{padding:88px 0}
 }
 .card h3{font-size:1.18rem;margin-bottom:10px}
 .card p{font-size:.98rem;color:var(--muted);max-width:none}
-.band-navy .card{background:#13203a;border-color:rgba(255,255,255,.08)}
+.band-navy .card{min-width:0;background:#13203a;border-color:rgba(255,255,255,.08)}
 .band-navy .card h3{color:#fff}
 .band-navy .card p{color:#aab4c6}
 
@@ -325,7 +325,7 @@ section{padding:88px 0}
 /* ===========================================================
    WHO THIS IS FOR (checklist)
    =========================================================== */
-.checklist{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
+.checklist{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 36px}
 .checklist li{list-style:none;display:flex;gap:13px;align-items:flex-start;font-size:1.02rem}
 .checklist li svg{flex:none;width:22px;height:22px;color:var(--gold);margin-top:3px}
 
@@ -399,7 +399,7 @@ body.lang-es .review-card.rev-en{display:none}
    BUYING POWER TOOL (Start Here)
    =========================================================== */
 .calc{background:#fff;border:1px solid var(--soft-gray);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow-md);max-width:760px;margin:0 auto}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.calc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
 .calc .field input{background:var(--warm-white)}
 .calc-out{margin-top:26px;background:var(--navy);border-radius:14px;padding:26px;color:#fff;text-align:center}
 .calc-out .pmt{font-family:"Manrope";font-weight:800;font-size:2.6rem;color:#fff;line-height:1}
@@ -444,19 +444,19 @@ body.lang-es .review-card.rev-en{display:none}
   .trust-badge .tb-head{font-size:1.12rem}
   .trust-badge .tb-sub{font-size:.7rem}
   .trust-badge .tb-small{font-size:.58rem}
-  .page-hero.with-portrait .ph-grid{grid-template-columns:1fr;gap:26px}
+  .page-hero.with-portrait .ph-grid{grid-template-columns:minmax(0,1fr);gap:26px}
   .page-hero.with-portrait .pwrap{margin:0 auto}
-  .split{grid-template-columns:1fr;gap:28px}
+  .split{grid-template-columns:minmax(0,1fr);gap:28px}
   .split.reverse .split-media{order:0}
-  .contact-grid{grid-template-columns:1fr;gap:26px}
+  .contact-grid{grid-template-columns:minmax(0,1fr);gap:26px}
 }
 @media(max-width:780px){
   section{padding:60px 0}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}   /* stacked cards, not tiny columns */
+  .grid-2,.grid-3,.grid-4{grid-template-columns:minmax(0,1fr)}   /* stacked cards, not tiny columns */
   .reviews .review-card{max-width:none}
-  .checklist{grid-template-columns:1fr;gap:12px}
-  .calc-grid{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr;gap:30px}
+  .checklist{grid-template-columns:minmax(0,1fr);gap:12px}
+  .calc-grid{grid-template-columns:minmax(0,1fr)}
+  .footer-top{grid-template-columns:minmax(0,1fr);gap:30px}
   .btn{max-width:100%;min-width:0}                      /* thumb-friendly */
   .btn-row{flex-direction:column;align-items:stretch}
   .btn-row .btn{width:auto;align-self:stretch}
