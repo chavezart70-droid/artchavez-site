@@ -35,8 +35,8 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 ul,ol,menu{list-style:none;-webkit-padding-start:0;padding-inline-start:0;-webkit-margin-start:0;margin-inline-start:0;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%;overflow-x:hidden}
-body{overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{overflow-x:clip}
 
 body{
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -104,16 +104,16 @@ img{max-width:100%;display:block}
    HEADER  (calm, simple — Header Rule)
    =========================================================== */
 .site-header{
-  position:sticky;top:0;z-index:60;
+  position:-webkit-sticky;position:sticky;top:0;z-index:60;
   background:rgba(247,245,239,.92);
   backdrop-filter:saturate(140%) blur(8px);
   border-bottom:1px solid var(--soft-gray);
 }
 .header-inner{
-  max-width:var(--maxw);margin:0 auto;padding:14px 24px;
+  max-width:var(--maxw);margin:0 auto;padding:7px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-.brand{display:flex;flex-direction:column;align-items:center;gap:7px;line-height:1.05}
+.brand{display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1.05}
 .brand-logo{height:98px;width:auto;display:block}
 .brand-tagline{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:700;font-size:14px;letter-spacing:.09em;color:var(--navy);text-transform:uppercase;white-space:nowrap}
 .brand-tagline::before,.brand-tagline::after{content:"";width:11px;height:2px;background:var(--gold);display:inline-block;flex:none}
@@ -468,7 +468,7 @@ body.lang-es .review-card.rev-en{display:none}
 }
 @media(max-width:600px){
   /* (1) compact header that still fits the menu button */
-  .header-inner{padding:11px 14px;gap:8px}
+  .header-inner{padding:5px 14px;gap:8px}
   .header-actions{gap:6px}
   .brand{max-width:none}
   .brand-logo{height:45px}
@@ -490,7 +490,7 @@ body.lang-es .review-card.rev-en{display:none}
 @media(max-width:480px){
   body{font-size:16px}
   .container{padding:0 18px}
-  .header-inner{padding:12px 18px}
+  .header-inner{padding:6px 18px}
   .calc{padding:22px}
 }
 
