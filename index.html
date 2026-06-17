@@ -113,7 +113,11 @@ img{max-width:100%;display:block}
   max-width:var(--maxw);margin:0 auto;padding:14px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-.brand{display:flex;flex-direction:column;line-height:1.05}
+.brand{display:flex;flex-direction:column;align-items:center;gap:7px;line-height:1.05}
+.brand-logo{height:98px;width:auto;display:block}
+.brand-tagline{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:700;font-size:14px;letter-spacing:.09em;color:var(--navy);text-transform:uppercase;white-space:nowrap}
+.brand-tagline::before,.brand-tagline::after{content:"";width:11px;height:2px;background:var(--gold);display:inline-block;flex:none}
+.brand-sep{width:2px;height:11px;background:var(--gold);display:inline-block;flex:none}
 .brand .name{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.32rem;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
 .brand .role{font-size:.74rem;letter-spacing:.04em;color:var(--muted);font-weight:500;margin-top:3px}
 
@@ -466,7 +470,11 @@ body.lang-es .review-card.rev-en{display:none}
   /* (1) compact header that still fits the menu button */
   .header-inner{padding:11px 14px;gap:8px}
   .header-actions{gap:6px}
-  .brand{max-width:150px}
+  .brand{max-width:none}
+  .brand-logo{height:45px}
+  .brand-tagline{flex-direction:column;align-items:center;gap:1px;font-size:8px;letter-spacing:.05em}
+  .brand-tagline::before,.brand-tagline::after{display:none}
+  .brand-sep{display:none}
   .brand .name{font-size:1.08rem}
   /* (2) keep title under the name on mobile, compact */
   .brand .role{font-size:.58rem;letter-spacing:.01em;margin-top:2px;line-height:1.22}
@@ -515,8 +523,12 @@ body.lang-es .review-card.rev-en{display:none}
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html" aria-label="Art Chavez home">
-      <span class="name">Art Chavez</span>
-      <span class="role" data-en="Real Estate Agent &amp; Mortgage Broker" data-es="Agente de Bienes Ra&iacute;ces &amp; Broker de Hipotecas">Real Estate Agent &amp; Mortgage Broker</span>
+      <img class="brand-logo" src="art-chavez-logo.png" alt="Art Chavez">
+      <span class="brand-tagline">
+        <span data-en="Real Estate Agent" data-es="Agente de Bienes Ra&iacute;ces">Real Estate Agent</span>
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span data-en="Mortgage Broker" data-es="Broker de Hipotecas">Mortgage Broker</span>
+      </span>
     </a>
     <nav class="nav-desktop" aria-label="Primary">
       <a href="start-here.html" class="nav-link" data-en="Start Here" data-es="Empiece Aqu&iacute;">Start Here</a>
