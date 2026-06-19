@@ -112,6 +112,7 @@ img{max-width:100%;display:block}
 .header-inner{
   max-width:var(--maxw);margin:0 auto;padding:7px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
+  min-width:0;
 }
 .brand{display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1.05}
 .brand-logo{height:98px;width:auto;display:block}
@@ -154,6 +155,10 @@ img{max-width:100%;display:block}
 .lang-toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 
 @media(max-width:1320px){.mortgage-link{display:none}}
+@media(max-width:1180px){
+  .header-cta span{display:none}
+  .header-cta{padding:0;width:42px;height:42px;justify-content:center;gap:0}
+}
 
 /* ---- Mobile menu (pure CSS :target — reliable in Safari) ---- */
 .menu-btn,.menu-close{display:none}
