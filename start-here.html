@@ -110,9 +110,9 @@ img{max-width:100%;display:block}
   border-bottom:1px solid var(--soft-gray);
 }
 .header-inner{
-  max-width:var(--maxw);margin:0 auto;padding:7px 24px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  min-width:0;
+  max-width:none;width:100%;margin:0 auto;padding:7px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-width:0;flex-wrap:nowrap;box-sizing:border-box;
 }
 .brand{display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1.05}
 .brand-logo{height:98px;width:auto;display:block}
@@ -134,7 +134,7 @@ img{max-width:100%;display:block}
 .nav-desktop a.nav-link:hover::after,.nav-desktop a.nav-link.active::after{width:100%}
 .nav-desktop a.nav-link.active{color:var(--navy)}
 
-.header-actions{display:flex;align-items:center;gap:12px}
+.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;justify-content:flex-end;flex:none}
 .header-cta{
   display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;
   font-family:"Manrope",sans-serif;font-weight:700;font-size:.88rem;padding:10px 15px;border-radius:10px;
@@ -154,8 +154,8 @@ img{max-width:100%;display:block}
 .lang-toggle button.active{background:var(--navy);color:#fff}
 .lang-toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 
-@media(max-width:1600px){.mortgage-link{display:none}}
-@media(max-width:1600px){
+@media(max-width:1650px){.mortgage-link{display:none}}
+@media(max-width:1650px){
   .header-cta span{display:none}
   .header-cta{padding:0;width:42px;height:42px;justify-content:center;gap:0}
 }
@@ -164,7 +164,7 @@ img{max-width:100%;display:block}
 .menu-btn,.menu-close{display:none}
 .mobile-menu{display:none}
 
-@media(max-width:1024px){
+@media(max-width:1180px){
   .nav-desktop{display:none}
   .header-actions .mortgage-link{display:none}
   .menu-btn{
